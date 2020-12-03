@@ -36,7 +36,7 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
                     }, { _error.value = true; _isLoading.value = false })
             }
         } else {
-            TODO("not implemented")
+            _isLoading.value = true
         }
     }
 }

@@ -22,6 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="102dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/black"
         />
 
 </FrameLayout>

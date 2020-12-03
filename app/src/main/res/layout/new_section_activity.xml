@@ -44,7 +44,7 @@
             android:hint="@string/hint_section"
             android:inputType="textAutoComplete"
             android:padding="8dp"
-            android:textColor="@color/colorText"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
 
         <TextView
@@ -56,7 +56,7 @@
             android:gravity="center"
             android:hint="@string/hint_image"
             android:padding="8dp"
-            android:textColor="@color/colorText"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
 
         <Button
@@ -67,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/border_buttons"
             android:text="@string/button_save"
-            android:textColor="@color/colorText" />
+            android:textColor="?android:attr/textColorPrimary"/>
 
     </LinearLayout>
 

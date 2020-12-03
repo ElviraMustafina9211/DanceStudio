@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
@@ -35,10 +36,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         binding.sendMessage.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("sms:")
-            intent.putExtra(
-                Intent.EXTRA_TEXT,
-                "Для продолжения занятий, необходимо приобрести абонемент"
-            )
+            intent.putExtra(Intent.EXTRA_TEXT, "Для продолжения занятий, необходимо приобрести абонемент")
             startActivity(intent)
         }
 
@@ -71,6 +69,7 @@ class StudentDetailsActivity : AppCompatActivity() {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
                 imm?.hideSoftInputFromWindow(v.windowToken, 0)
             }
+            Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show()
         }
 
         studentDetailsViewModel.closeScreen.observe(this, { closeScreen: Boolean ->

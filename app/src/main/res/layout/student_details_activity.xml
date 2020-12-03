@@ -41,7 +41,7 @@
             android:id="@+id/section_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
+            android:textColor="?android:attr/textColorPrimary"
             android:gravity="center"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
@@ -52,7 +52,7 @@
             android:id="@+id/student_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
+            android:textColor="?android:attr/textColorPrimary"
             android:gravity="center"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
@@ -78,7 +78,7 @@
                 android:id="@+id/number_of_lessons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
+                android:textColor="?android:attr/textColorPrimary"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:layout_marginRight="8dp"
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
+                android:textColor="?android:attr/textColorPrimary"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="@string/number_of_lessons" />
@@ -108,7 +108,7 @@
             android:id="@+id/check_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
+            android:textColor="?android:attr/textColorPrimary"
             android:gravity="center"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
@@ -135,7 +135,7 @@
                 android:id="@+id/balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
+                android:textColor="?android:attr/textColorPrimary"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:layout_marginRight="8dp"
@@ -154,7 +154,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
+                android:textColor="?android:attr/textColorPrimary"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="@string/balance" />
@@ -175,7 +175,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/border_buttons"
                 android:text="@string/button_save"
-                android:textColor="@color/colorText" />
+                android:textColor="?android:attr/textColorPrimary" />
 
             <Button
                 android:id="@+id/delete_student_details_button"
@@ -185,7 +185,7 @@
                 android:layout_marginLeft="24dp"
                 android:background="@drawable/border_buttons"
                 android:text="@string/button_delete"
-                android:textColor="@color/colorText" />
+                android:textColor="?android:attr/textColorPrimary" />
         </LinearLayout>
 
     </LinearLayout>

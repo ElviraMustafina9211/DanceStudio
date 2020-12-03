@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:spinnerMode="dropdown"
-            android:textColor="@color/colorText" />
+            android:textColor="?android:attr/textColorPrimary" />
 
         <EditText
             android:id="@+id/edit_full_name"
@@ -49,7 +49,7 @@
             android:imeOptions="actionDone"
             android:inputType="textAutoComplete"
             android:padding="8dp"
-            android:textColor="@color/colorText" />
+            android:textColor="?android:attr/textColorPrimary" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                 android:inputType="textAutoComplete"
                 android:textSize="14sp"
                 android:padding="8dp"
-                android:textColor="@color/colorText" />
+                android:textColor="?android:attr/textColorPrimary" />
 
             <CheckBox
                 android:id="@+id/payment"
@@ -92,7 +92,7 @@
                 android:inputType="textAutoComplete"
                 android:padding="8dp"
                 android:textSize="14sp"
-                android:textColor="@color/colorText" />
+                android:textColor="?android:attr/textColorPrimary" />
 
         </LinearLayout>
 
@@ -104,7 +104,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/border_buttons"
             android:text="@string/button_save"
-            android:textColor="@color/colorText" />
+            android:textColor="?android:attr/textColorPrimary" />
 
     </LinearLayout>
 

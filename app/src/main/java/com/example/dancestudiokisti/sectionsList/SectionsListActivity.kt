@@ -1,11 +1,13 @@
 package com.example.dancestudiokisti.sectionsList
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.ListSectionsActivityBinding
@@ -16,8 +18,6 @@ import javax.inject.Inject
 
 
 class SectionsListActivity : AppCompatActivity() {
-
-    private var isNight: Boolean = false
 
     private lateinit var binding: ListSectionsActivityBinding
 
@@ -83,13 +83,23 @@ class SectionsListActivity : AppCompatActivity() {
         inflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.change_mode -> {
-//                AppCompatDelegate.setDefaultNightMode().delegate().setLocalNightMode
+                switchMode()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun switchMode() {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 }

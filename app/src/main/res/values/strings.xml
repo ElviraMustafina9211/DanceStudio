@@ -34,4 +34,6 @@
     <string name="pick_image">Выберите картинку</string>
     <string name="hint_image">Выберите картинку для секции</string>
     <string name="button_delete">Удалить</string>
+    <string name="add_student">Add student</string>
+    <string name="add_section">Add section</string>
 </resources>

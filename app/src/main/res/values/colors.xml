@@ -2,7 +2,10 @@
 <resources>
     <color name="colorPrimary">#489fb5</color>
     <color name="colorAccent">#ffa62b</color>
+    <color name="textColorPrimary">@android:color/black</color>
     <color name="colorBackground">#ede7e3</color>
     <color name="borderBackground">#26FFA62B</color>
     <color name="buttonBackground">#73489FB5</color>
+    <color name="buttonSolid">#80FFA62B</color>
+    <color name="dancesSolid">#0DFFA62B</color>
 </resources>

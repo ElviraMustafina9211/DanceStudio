@@ -25,7 +25,7 @@
 
         <activity
             android:name=".sectionsList.SectionsListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name=".list.StudentsListActivity"
