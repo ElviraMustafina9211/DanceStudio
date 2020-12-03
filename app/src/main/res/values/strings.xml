@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Dance Studio \'Kisti\'</string>
+    <string name="action_reset">Стереть данные?</string>
+
+    <string name="main_activity_label">Main Activity</string>
+    <string name="second_screen_label">Second Screen</string>
+    <string name="third_screen_label">Third Screen</string>
+
+    <string name="image_of_dance_section">Image of dance section</string>
+    <string name="payment">оплачено?</string>
+    <string name="number_of_lessons">занятий куплено</string>
+    <string name="balance">осталось занятий</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="pole_dance">Pole Dance</string>
+    <string name="stretching">Stretching</string>
+    <string name="hint_section">Укажите новую секцию…</string>
+    <string name="hint_student">Укажите ФИО нового ученика…</string>
+    <string name="button_save">Сохранить</string>
+    <string name="hint_purchased_lessons">занятий куплено </string>
+    <string name="hint_payment">Оплачено?</string>
+    <string name="hint_balance">занятий осталось</string>
+    <string name="change_mode">Сменить режим</string>
+    <string name="update_student">Добавить информацию по студенту?</string>
+    <string name="no_internet_connection">
+        Нет подключения к интернету \n
+        Повторить загрузку?
+    </string>
+    <string name="student_details_title">Информация по ученику</string>
+    <string name="students_list_title">Список учеников</string>
+    <string name="new_section_title">Добавление новой секции</string>
+    <string name="new_student_title">Добавление нового ученика</string>
+    <string name="sections_list_title">Список секций</string>
+    <string name="pick_image">Выберите картинку</string>
+    <string name="hint_image">Выберите картинку для секции</string>
+    <string name="button_delete">Удалить</string>
+</resources>
