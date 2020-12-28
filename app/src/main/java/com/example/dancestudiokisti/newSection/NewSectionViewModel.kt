@@ -15,6 +15,9 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
     private val _error: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val error: LiveData<Boolean> = _error
 
+    private val _closeScreen: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val closeScreen: LiveData<Boolean> = _closeScreen
+
     private var disposable: Disposable? = null
     override fun onCleared() {
         super.onCleared()
@@ -33,6 +36,7 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         _isLoading.value = false
+                        _closeScreen.value = true
                     }, { _error.value = true; _isLoading.value = false })
             }
         } else {

@@ -16,7 +16,6 @@ import com.example.dancestudiokisti.sectionsList.SectionsListViewModel
 import dagger.Module
 import dagger.Provides
 
-
 @Module
 class AppModule {
     @Provides
@@ -44,7 +43,6 @@ class AppModule {
         return NewStudentRepository()
     }
 
-    /////////////////
     @Provides
     fun newStudentViewModel(newStudentRepository: NewStudentRepository): NewStudentViewModel {
         return NewStudentViewModel(newStudentRepository, sectionsListRepository())

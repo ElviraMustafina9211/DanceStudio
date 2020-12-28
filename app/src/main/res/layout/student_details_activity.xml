@@ -149,8 +149,6 @@
                 android:background="@drawable/border_buttons"
                 android:text="@string/plus" />
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -174,7 +172,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:background="@drawable/border_buttons"
-                android:text="@string/button_save"
+                android:text="@string/button_save_details"
                 android:textColor="?android:attr/textColorPrimary" />
 
             <Button

@@ -16,7 +16,8 @@
     <string name="stretching">Stretching</string>
     <string name="hint_section">Укажите новую секцию…</string>
     <string name="hint_student">Укажите ФИО нового ученика…</string>
-    <string name="button_save">Сохранить</string>
+    <string name="button_save">Сохранить ученика</string>
+    <string name="button_save_details">Сохранить детали</string>
     <string name="hint_purchased_lessons">занятий куплено </string>
     <string name="hint_payment">Оплачено?</string>
     <string name="hint_balance">занятий осталось</string>
@@ -33,7 +34,8 @@
     <string name="sections_list_title">Список секций</string>
     <string name="pick_image">Выберите картинку</string>
     <string name="hint_image">Выберите картинку для секции</string>
-    <string name="button_delete">Удалить</string>
+    <string name="button_delete">Удалить ученика</string>
     <string name="add_student">Add student</string>
     <string name="add_section">Add section</string>
+    <string name="button_save_section">Сохранить секцию</string>
 </resources>

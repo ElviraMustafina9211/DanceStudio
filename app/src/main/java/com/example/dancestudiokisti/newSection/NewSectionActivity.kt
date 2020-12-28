@@ -52,10 +52,12 @@ class NewSectionActivity : AppCompatActivity() {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
                 imm?.hideSoftInputFromWindow(v.windowToken, 0)
             }
-
-            finish()
         }
-
+        newSectionViewModel.closeScreen.observe(this, { closeScreen: Boolean ->
+            if (closeScreen) {
+                finish()
+            }
+        })
         newSectionViewModel.isLoading.observe(this, { isLoading: Boolean ->
             if (isLoading) {
                 binding.progressBar.visibility = View.VISIBLE

@@ -28,17 +28,16 @@ class StudentsListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val sectionName = intent.getStringExtra("sectionName")
 
         binding.fabAddStudent.setOnClickListener {
             val intent = Intent(this, NewStudentActivity::class.java)
-            intent.putExtra("sectionName", "New Section")
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
         }
 
+        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
 
+        val sectionName = intent.getStringExtra("sectionName")
         studentsListViewModel.getFullNames(sectionName)
 
         val recyclerView = binding.recyclerviewListStudentsActivity
@@ -73,5 +72,11 @@ class StudentsListActivity : AppCompatActivity() {
         swipeRefreshLayout.setOnRefreshListener {
             studentsListViewModel.getFullNames(sectionName)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val sectionName = intent.getStringExtra("sectionName")
+        studentsListViewModel.getFullNames(sectionName)
     }
 }

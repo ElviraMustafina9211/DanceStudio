@@ -30,44 +30,26 @@
         <activity
             android:name=".list.StudentsListActivity"
             android:parentActivityName=".sectionsList.SectionsListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".sectionsList.SectionsListActivity" />
         </activity>
 
         <activity
             android:name=".details.StudentDetailsActivity"
-            android:parentActivityName="list.StudentsListActivity"
-            tools:targetApi="jelly_bean">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="list.StudentsListActivity" />
+            android:parentActivityName=".list.StudentsListActivity">
         </activity>
-
 
         <activity
             android:name=".newSection.NewSectionActivity"
             android:parentActivityName=".sectionsList.SectionsListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".sectionsList.SectionsListActivity" />
         </activity>
 
         <activity
             android:name=".newStudent.NewStudentActivity"
-            android:parentActivityName="list.StudentsListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="list.StudentsListActivity" />
+            android:parentActivityName=".list.StudentsListActivity">
         </activity>
-
 
         <activity
             android:name=".imagePicker.ImageActivity"
-            android:parentActivityName=".newStudent.NewStudentActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".newStudent.NewStudentActivity" />
+            android:parentActivityName=".newSection.NewSectionActivity">
         </activity>
 
     </application>

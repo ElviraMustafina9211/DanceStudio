@@ -9,8 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class NewStudentViewModel(private val newStudentRepository: NewStudentRepository,
-                          private  val  sectionsListRepository: SectionsListRepository) : ViewModel() {
+class NewStudentViewModel(private val newStudentRepository: NewStudentRepository, private  val  sectionsListRepository: SectionsListRepository) : ViewModel() {
 
     private val _sectionNames: MutableLiveData<List<String>> = MutableLiveData<List<String>>()
     val sectionNames: LiveData<List<String>> = _sectionNames
@@ -20,6 +19,9 @@ class NewStudentViewModel(private val newStudentRepository: NewStudentRepository
 
     private val _error: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val error: LiveData<Boolean> = _error
+
+    private val _closeScreen: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val closeScreen: LiveData<Boolean> = _closeScreen
 
     private var disposable: Disposable? = null
     private var getSectionsDisposable: Disposable? = null
@@ -52,6 +54,7 @@ class NewStudentViewModel(private val newStudentRepository: NewStudentRepository
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _isLoading.value = false
+                _closeScreen.value = true
             }, { _error.value = true; _isLoading.value = false })
     }
 }

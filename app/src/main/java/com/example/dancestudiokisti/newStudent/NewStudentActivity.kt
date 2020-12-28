@@ -57,9 +57,12 @@ class NewStudentActivity : AppCompatActivity() {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
                 imm?.hideSoftInputFromWindow(v.windowToken, 0)
             }
-
-            finish()
         }
+        newStudentViewModel.closeScreen.observe(this, { closeScreen: Boolean ->
+            if (closeScreen) {
+                finish()
+            }
+        })
 
         newStudentViewModel.getSections()
 
