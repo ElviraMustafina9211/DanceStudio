@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.newSection.Section
 
-class SectionsListAdapter (private val onSectionLongPressListener: OnSectionLongPressListener): RecyclerView.Adapter<SectionsItemHolder>() {
+class SectionsListAdapter(
+    private val onSectionLongPressListener: OnSectionLongPressListener,
+    private val onSectionClickListener: OnSectionClickListener
+) : RecyclerView.Adapter<SectionsItemHolder>() {
 
     private var sections: List<Section> = emptyList()
 
@@ -17,8 +20,9 @@ class SectionsListAdapter (private val onSectionLongPressListener: OnSectionLong
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionsItemHolder {
-        val itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.section_item, parent, false)
-        return SectionsItemHolder(itemView, onSectionLongPressListener)
+        val itemView: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.section_item, parent, false)
+        return SectionsItemHolder(itemView, onSectionLongPressListener, onSectionClickListener)
     }
 
     override fun onBindViewHolder(holder: SectionsItemHolder, position: Int) {

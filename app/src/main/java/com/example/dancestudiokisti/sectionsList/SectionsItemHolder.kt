@@ -1,6 +1,5 @@
 package com.example.dancestudiokisti.sectionsList
 
-import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,11 +10,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.dancestudiokisti.R
-import com.example.dancestudiokisti.list.StudentsListActivity
 import com.example.dancestudiokisti.newSection.Section
 
 
-class SectionsItemHolder(view: View, onSectionLongPressListener: OnSectionLongPressListener) : RecyclerView.ViewHolder(view) {
+class SectionsItemHolder(view: View, onSectionLongPressListener: OnSectionLongPressListener,
+                         onSectionClickListener: OnSectionClickListener) : RecyclerView.ViewHolder(view) {
 
     private lateinit var section: Section
 
@@ -25,9 +24,10 @@ class SectionsItemHolder(view: View, onSectionLongPressListener: OnSectionLongPr
 
     init {
         view.setOnClickListener {
-            val intent = Intent(view.context, StudentsListActivity::class.java)
-            intent.putExtra("sectionName", section.name)
-            view.context.startActivity(intent)
+            onSectionClickListener.onClick(section)
+//            val intent = Intent(view.context, StudentsListActivity::class.java)
+//            intent.putExtra("sectionName", section.name)
+//            view.context.startActivity(intent)
         }
 
         view.setOnLongClickListener{

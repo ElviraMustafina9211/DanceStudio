@@ -24,33 +24,8 @@
         </activity>
 
         <activity
-            android:name=".sectionsList.SectionsListActivity"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".list.StudentsListActivity"
-            android:parentActivityName=".sectionsList.SectionsListActivity">
-        </activity>
-
-        <activity
-            android:name=".details.StudentDetailsActivity"
-            android:parentActivityName=".list.StudentsListActivity">
-        </activity>
-
-        <activity
-            android:name=".newSection.NewSectionActivity"
-            android:parentActivityName=".sectionsList.SectionsListActivity">
-        </activity>
-
-        <activity
-            android:name=".newStudent.NewStudentActivity"
-            android:parentActivityName=".list.StudentsListActivity">
-        </activity>
-
-        <activity
-            android:name=".imagePicker.ImageActivity"
-            android:parentActivityName=".newSection.NewSectionActivity">
-        </activity>
 
     </application>
 

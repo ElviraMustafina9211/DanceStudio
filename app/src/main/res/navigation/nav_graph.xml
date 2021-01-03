@@ -3,35 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MainActivity">
+    app:startDestination="@id/SectionsListFragment">
 
     <fragment
-        android:id="@+id/MainActivity"
-        android:name="com.example.dancestudiokisti.sectionsList.SectionsListActivity"
-        android:label="@string/main_activity_label"
-        tools:layout="@layout/list_sections_activity">
+        android:id="@+id/SectionsListFragment"
+        android:name="com.example.dancestudiokisti.sectionsList.SectionsListFragment"
+        android:label="@string/list_sections_fragment_label"
+        tools:layout="@layout/list_sections_fragment">
+
         <action
-            android:id="@+id/action_MainActivity_to_SecondFragment"
-            app:destination="@id/ListStudentsActivity" />
+            android:id="@+id/action_SectionsListFragment_to_StudentsListFragment"
+            app:destination="@id/StudentsListFragment" />
+
+        <action
+            android:id="@+id/action_SectionsListFragment_to_NewSectionFragment"
+            app:destination="@id/NewSectionFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/ListStudentsActivity"
-        android:name="com.example.dancestudiokisti.list.StudentsListActivity"
-        android:label="@string/second_screen_label"
-        tools:layout="@layout/list_students_activity">
+        android:id="@+id/StudentsListFragment"
+        android:name="com.example.dancestudiokisti.list.StudentsListFragment"
+        android:label="@string/list_students_fragment_label"
+        tools:layout="@layout/list_students_fragment">
+
         <action
-            android:id="@+id/action_ListStudentsActivity_to_StudentDetailsActivity"
-            app:destination="@id/StudentDetailsActivity" />
+            android:id="@+id/action_StudentsListFragment_to_StudentDetailsFragment"
+            app:destination="@id/StudentDetailsFragment" />
+
+        <action
+            android:id="@+id/action_StudentsListFragment_to_NewStudentFragment"
+            app:destination="@id/NewStudentFragment" />
+        <argument
+            android:name="sectionName"
+            app:argType="string" />
     </fragment>
 
     <fragment
-        android:id="@+id/StudentDetailsActivity"
-        android:name="com.example.dancestudiokisti.details.StudentDetailsActivity"
-        android:label="@string/third_screen_label"
-        tools:layout="@layout/student_details_activity">
-        <action
-            android:id="@+id/action_StudentDetailsActivity_to_MainActivity"
-            app:destination="@id/MainActivity" />
+        android:id="@+id/StudentDetailsFragment"
+        android:name="com.example.dancestudiokisti.details.StudentDetailsFragment"
+        android:label="@string/student_details_fragment_label"
+        tools:layout="@layout/student_details_fragment">
     </fragment>
+
+    <fragment
+        android:id="@+id/NewSectionFragment"
+        android:name="com.example.dancestudiokisti.newSection.NewSectionFragment"
+        android:label="@string/new_section_fragment_label"
+        tools:layout="@layout/new_section_fragment">
+
+        <action
+            android:id="@+id/action_NewSectionFragment_to_ImageFragment"
+            app:destination="@id/ImageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ImageFragment"
+        android:name="com.example.dancestudiokisti.imagePicker.ImageFragment"
+        android:label="@string/image_picker_fragment_label"
+        tools:layout="@layout/image_picker_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/NewStudentFragment"
+        android:name="com.example.dancestudiokisti.newStudent.NewStudentFragment"
+        android:label="@string/new_student_fragment_label"
+        tools:layout="@layout/new_student_fragment">
+    </fragment>
+
 </navigation>

@@ -1,36 +1,32 @@
 package com.example.dancestudiokisti.details
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.dancestudiokisti.Injector
-import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.Student
-import com.example.dancestudiokisti.databinding.StudentDetailsActivityBinding
+import com.example.dancestudiokisti.databinding.StudentDetailsFragmentBinding
 import javax.inject.Inject
 
 
-class StudentDetailsActivity : AppCompatActivity() {
+class StudentDetailsFragment : Fragment() {
 
-    private lateinit var binding: StudentDetailsActivityBinding
+    private var studentDetailsFragmentBinding: StudentDetailsFragmentBinding? = null
 
     @Inject
     lateinit var studentDetailsViewModel: StudentDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = StudentDetailsActivityBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        title = getString(R.string.student_details_title)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val objectId = intent.getStringExtra("objectId")
+//        binding = StudentDetailsActivityBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//        title = getString(R.string.student_details_title)
+//        setSupportActionBar(binding.toolbar)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//
+//        val objectId = intent.getStringExtra("objectId")
 
         //При нажатии на кнопку "Отправить сообщение" откроется экран для отправки SMS
         binding.sendMessage.setOnClickListener {
@@ -42,9 +38,9 @@ class StudentDetailsActivity : AppCompatActivity() {
 
         Injector.instance.inject(this)
 
-        if (objectId != null) {
-            studentDetailsViewModel.getStudentDetails(objectId)
-        }
+//        if (objectId != null) {
+//            studentDetailsViewModel.getStudentDetails(objectId)
+//        }
 
         //Подписка на LiveData с деталями по студенту
         studentDetailsViewModel.detailsLiveData.observe(this, { studentDetails: Student ->
@@ -64,17 +60,17 @@ class StudentDetailsActivity : AppCompatActivity() {
             studentDetailsViewModel.updateStudentDetails(numberOfLessons, payment, balanceLessons)
 
             //Скрыть клавиатуру
-            val view = this.currentFocus
-            view?.let { v ->
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                imm?.hideSoftInputFromWindow(v.windowToken, 0)
-            }
-            Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show()
+//            val view = this.currentFocus
+//            view?.let { v ->
+//                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+//                imm?.hideSoftInputFromWindow(v.windowToken, 0)
+//            }
+//            Toast.makeText(this, "Данные сохранены", Toast.LENGTH_SHORT).show()
         }
 
         studentDetailsViewModel.closeScreen.observe(this, { closeScreen: Boolean ->
             if (closeScreen) {
-                finish()
+//                finish()
             }
         })
 
@@ -83,11 +79,11 @@ class StudentDetailsActivity : AppCompatActivity() {
             studentDetailsViewModel.deleteStudentDetails()
 
             //Скрыть клавиатуру
-            val view = this.currentFocus
-            view?.let { v ->
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                imm?.hideSoftInputFromWindow(v.windowToken, 0)
-            }
+//            val view = this.currentFocus
+//            view?.let { v ->
+//                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+//                imm?.hideSoftInputFromWindow(v.windowToken, 0)
+//            }
         }
 
         //Установить/скрыть loading indicator
@@ -112,9 +108,9 @@ class StudentDetailsActivity : AppCompatActivity() {
         //При нажатии на "Нет подключения к интернету, повторить загрузку?"
         // и включении инета юзером, выполнить еще раз запрос
         binding.noInternetConnection.setOnClickListener {
-            if (objectId != null) {
-                studentDetailsViewModel.getStudentDetails(objectId)
-            }
+//            if (objectId != null) {
+//                studentDetailsViewModel.getStudentDetails(objectId)
+//            }
         }
 
         //При нажатии на + или -
