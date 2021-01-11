@@ -7,11 +7,13 @@ import com.example.dancestudiokisti.newSection.NewSectionFragment
 import com.example.dancestudiokisti.newStudent.NewStudentFragment
 import com.example.dancestudiokisti.sectionsList.SectionsListFragment
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
-    fun inject(studentDetailFragment: StudentDetailsFragment)
-    fun inject(studentListFragment: StudentsListFragment)
+    fun inject(studentDetailsFragment: StudentDetailsFragment)
+    fun inject(studentsListFragment: StudentsListFragment)
     fun inject(newStudentFragment: NewStudentFragment)
     fun inject(newStudentFragment: NewSectionFragment)
     fun inject(sectionsListFragment: SectionsListFragment)

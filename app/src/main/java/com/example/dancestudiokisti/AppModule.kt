@@ -12,9 +12,9 @@ import com.example.dancestudiokisti.newStudent.NewStudentRepository
 import com.example.dancestudiokisti.newStudent.NewStudentViewModel
 import com.example.dancestudiokisti.sectionsList.SectionsListRepository
 import com.example.dancestudiokisti.sectionsList.SectionsListViewModel
-
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class AppModule {
@@ -24,8 +24,8 @@ class AppModule {
     }
 
     @Provides
-    fun studentDetailsViewModel(studentDetailRepository: StudentDetailsRepository): StudentDetailsViewModel {
-        return StudentDetailsViewModel(studentDetailRepository)
+    fun studentDetailsViewModel(studentDetailsRepository: StudentDetailsRepository): StudentDetailsViewModel {
+        return StudentDetailsViewModel(studentDetailsRepository)
     }
 
     @Provides
@@ -76,5 +76,11 @@ class AppModule {
     @Provides
     fun imageViewModel(imageRepository: ImageRepository): ImageViewModel {
         return ImageViewModel(imageRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun keyboard(): Keyboard {
+        return KeyboardImpl()
     }
 }

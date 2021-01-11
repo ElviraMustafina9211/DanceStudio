@@ -24,6 +24,13 @@ class SectionsListFragment : Fragment() {
     @Inject
     lateinit var sectionsListViewModel: SectionsListViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
+        Injector.instance.inject(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.list_sections_fragment, container, false)
@@ -45,11 +52,10 @@ class SectionsListFragment : Fragment() {
 //            findNavController().navigate(R.id.action_SectionsListFragment_to_StudentsListFragment)
 //        }
 
-        Injector.instance.inject(this)
 
         sectionsListViewModel.getSectionsList()
 
-        val recyclerView = binding.recyclerviewListSectionsActivity
+        val recyclerView = binding.recyclerviewListSectionsFragment
         val sectionsListAdapter = SectionsListAdapter(object : OnSectionLongPressListener {
             override fun onLongPressed(section: Section) {
                 sectionsListViewModel.deleteOneSection(section.objectId)
@@ -59,7 +65,7 @@ class SectionsListFragment : Fragment() {
                 val action = SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(section.name)
                 findNavController().navigate(action)
             }
-        } )
+        })
 
         recyclerView.adapter = sectionsListAdapter
 

@@ -26,6 +26,10 @@
         android:label="@string/list_students_fragment_label"
         tools:layout="@layout/list_students_fragment">
 
+        <argument
+            android:name="sectionName"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_StudentsListFragment_to_StudentDetailsFragment"
             app:destination="@id/StudentDetailsFragment" />
@@ -33,9 +37,6 @@
         <action
             android:id="@+id/action_StudentsListFragment_to_NewStudentFragment"
             app:destination="@id/NewStudentFragment" />
-        <argument
-            android:name="sectionName"
-            app:argType="string" />
     </fragment>
 
     <fragment
@@ -43,6 +44,10 @@
         android:name="com.example.dancestudiokisti.details.StudentDetailsFragment"
         android:label="@string/student_details_fragment_label"
         tools:layout="@layout/student_details_fragment">
+
+        <argument
+            android:name="objectId"
+            app:argType="string" />
     </fragment>
 
     <fragment

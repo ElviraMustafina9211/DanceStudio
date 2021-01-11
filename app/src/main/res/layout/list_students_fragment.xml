@@ -33,7 +33,7 @@
         tools:layout_editor_absoluteY="56dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_list_students_activity"
+            android:id="@+id/recyclerview_list_students_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

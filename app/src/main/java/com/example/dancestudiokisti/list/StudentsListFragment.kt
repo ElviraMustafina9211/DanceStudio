@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
@@ -24,12 +25,15 @@ class StudentsListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.list_students_fragment, container, false)
     }
 
@@ -38,22 +42,34 @@ class StudentsListFragment : Fragment() {
         val binding = ListStudentsFragmentBinding.bind(view)
         listStudentsFragmentBinding = binding
 
-        binding.fabAddStudent.setOnClickListener {
-//            val intent = Intent(this, NewStudentActivity::class.java)
-//            startActivity(intent)
-        }
+//        binding.fabAddStudent.OnAddStudentClickListener {
+//            override fun onClick () {
+//                val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
+//                findNavController().navigate(action)
+//            }
+//
+//        }
 
 
 //        val sectionName = intent.getStringExtra("sectionName")
         studentsListViewModel.getFullNames(args.sectionName)
 
-        val recyclerView = binding.recyclerviewListStudentsActivity
-        val studentsListAdapter = StudentsListAdapter()
+        val recyclerView = binding.recyclerviewListStudentsFragment
+        val studentsListAdapter = StudentsListAdapter(object : OnStudentClickListener {
+            override fun onClicked(objectId: String) {
+                val action = StudentsListFragmentDirections.actionStudentsListFragmentToStudentDetailsFragment(objectId)
+                findNavController().navigate(action)
+            }
+        })
+
         recyclerView.adapter = studentsListAdapter
 
-        studentsListViewModel.studentsList.observe(viewLifecycleOwner, { studentsList: List<Student> ->
-            studentsListAdapter.setStudents(studentsList)
-        })
+
+        studentsListViewModel.studentsList.observe(
+            viewLifecycleOwner,
+            { studentsList: List<Student> ->
+                studentsListAdapter.setStudents(studentsList)
+            })
 
         studentsListViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
             if (isLoading) {

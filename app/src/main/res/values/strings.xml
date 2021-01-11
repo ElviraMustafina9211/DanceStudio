@@ -44,4 +44,5 @@
     <string name="new_section_fragment_label">New Section Fragment</string>
     <string name="image_picker_fragment_label">Image Fragment</string>
     <string name="new_student_fragment_label">New Student Fragment</string>
+    <string name="data_saved">Данные сохранены</string>
 </resources>

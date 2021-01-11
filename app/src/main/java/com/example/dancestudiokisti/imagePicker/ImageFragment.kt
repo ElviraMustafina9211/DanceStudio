@@ -31,7 +31,7 @@ class ImageFragment : Fragment() {
 
         imageViewModel.getImageList()
 
-        val recyclerView = binding.recyclerviewImagePickerActivity
+        val recyclerView = binding.recyclerviewImagePickerFragment
         val imageAdapter = ImageAdapter { selectedLink ->
             val intent = Intent()
             intent.putExtra(EXTRA_SELECTED_LINK, selectedLink)

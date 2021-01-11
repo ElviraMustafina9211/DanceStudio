@@ -5,7 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dancestudiokisti.R
 
-class StudentsItemHolder(view: View): RecyclerView.ViewHolder(view) {
+class StudentsItemHolder(view: View, onStudentClickListener: OnStudentClickListener): RecyclerView.ViewHolder(view) {
 
     private lateinit var objectId: String
 
@@ -13,6 +13,8 @@ class StudentsItemHolder(view: View): RecyclerView.ViewHolder(view) {
 
     init {
         view.setOnClickListener {
+            onStudentClickListener.onClicked(objectId)
+
 //            val intent = Intent(view.context, StudentDetailsActivity::class.java)
 //            intent.putExtra("objectId",  objectId)
 //            view.context.startActivity(intent)

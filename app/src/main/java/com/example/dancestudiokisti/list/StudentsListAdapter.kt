@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.Student
 
-class StudentsListAdapter : RecyclerView.Adapter<StudentsItemHolder>() {
+class StudentsListAdapter(private val onStudentClickListener: OnStudentClickListener) : RecyclerView.Adapter<StudentsItemHolder>() {
 
     private var students: List<Student> = emptyList()
 
@@ -18,7 +18,7 @@ class StudentsListAdapter : RecyclerView.Adapter<StudentsItemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentsItemHolder {
         val itemView: View = LayoutInflater.from(parent.context).inflate(R.layout.student_item, parent, false)
-        return StudentsItemHolder(itemView)
+        return StudentsItemHolder(itemView, onStudentClickListener)
     }
 
     override fun onBindViewHolder(holder: StudentsItemHolder, position: Int) {
