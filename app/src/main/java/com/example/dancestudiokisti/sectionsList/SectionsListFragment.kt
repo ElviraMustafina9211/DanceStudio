@@ -48,9 +48,9 @@ class SectionsListFragment : Fragment() {
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-//        binding.fabAddSection.setOnClickListener {
-//            findNavController().navigate(R.id.action_SectionsListFragment_to_StudentsListFragment)
-//        }
+        binding.fabAddSection.setOnClickListener {
+            val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
+            findNavController().navigate(action)        }
 
 
         sectionsListViewModel.getSectionsList()

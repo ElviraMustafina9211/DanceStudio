@@ -42,13 +42,12 @@ class StudentsListFragment : Fragment() {
         val binding = ListStudentsFragmentBinding.bind(view)
         listStudentsFragmentBinding = binding
 
-//        binding.fabAddStudent.OnAddStudentClickListener {
-//            override fun onClick () {
-//                val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
-//                findNavController().navigate(action)
-//            }
-//
-//        }
+        binding.fabAddStudent.OnAddStudentClickListener {
+            override fun onClick () {
+                val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
+                findNavController().navigate(action)
+            }
+        }
 
 
 //        val sectionName = intent.getStringExtra("sectionName")

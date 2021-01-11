@@ -15,7 +15,7 @@ interface AppComponent {
     fun inject(studentDetailsFragment: StudentDetailsFragment)
     fun inject(studentsListFragment: StudentsListFragment)
     fun inject(newStudentFragment: NewStudentFragment)
-    fun inject(newStudentFragment: NewSectionFragment)
+    fun inject(newSectionFragment: NewSectionFragment)
     fun inject(sectionsListFragment: SectionsListFragment)
     fun inject(imageFragment: ImageFragment)
 }
