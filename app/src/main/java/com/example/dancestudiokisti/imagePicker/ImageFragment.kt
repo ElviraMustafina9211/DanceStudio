@@ -2,10 +2,15 @@ package com.example.dancestudiokisti.imagePicker
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.dancestudiokisti.Injector
+import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.ImagePickerFragmentBinding
+import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
+import com.example.dancestudiokisti.newSection.NewSectionViewModel
 import javax.inject.Inject
 
 class ImageFragment : Fragment() {
@@ -14,13 +19,29 @@ class ImageFragment : Fragment() {
         const val EXTRA_SELECTED_LINK = "selected_image_link"
     }
 
-    private lateinit var binding: ImagePickerFragmentBinding
+    private var imagePickerFragmentBinding: ImagePickerFragmentBinding? = null
 
     @Inject
     lateinit var imageViewModel: ImageViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
+        Injector.instance.inject(this)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.image_picker_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = ImagePickerFragmentBinding.bind(view)
+        imagePickerFragmentBinding = binding
+
 //        binding = ImagePickerActivityBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
 //        title = "Выбор картинки для секции"

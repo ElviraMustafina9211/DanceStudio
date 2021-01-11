@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
@@ -51,6 +52,8 @@ class NewSectionFragment : Fragment() {
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.imagePicker.setOnClickListener {
+            val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
+            findNavController().navigate(action)
 //            val intent = Intent(this, ImageActivity::class.java)
 //            startActivityForResult(intent, NEW_IMAGE_ACTIVITY_REQUEST_CODE)
         }
