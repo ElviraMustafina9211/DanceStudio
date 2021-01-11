@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
+import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
 import javax.inject.Inject
@@ -26,6 +27,8 @@ class NewSectionFragment : Fragment() {
     @Inject
     lateinit var newSectionViewModel: NewSectionViewModel
 
+    @Inject
+    lateinit var keyboard: Keyboard
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,17 +54,12 @@ class NewSectionFragment : Fragment() {
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.imagePicker.setOnClickListener {
-            val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
-            findNavController().navigate(action)
-//            val intent = Intent(this, ImageActivity::class.java)
-//            startActivityForResult(intent, NEW_IMAGE_ACTIVITY_REQUEST_CODE)
-        }
-
         binding.saveSectionButton.setOnClickListener {
             val editSection: EditText = binding.editText
             val sectionName = editSection.text.toString()
             newSectionViewModel.createSection(sectionName, selectedImageUrl)
+            //Скрыть клавиатуру
+            keyboard.hideKeyboard(view)
 
 //            val view = this.currentFocus
 //            view?.let { v ->
@@ -69,6 +67,18 @@ class NewSectionFragment : Fragment() {
 //                imm?.hideSoftInputFromWindow(v.windowToken, 0)
 //            }
         }
+
+
+        binding.imagePicker.setOnClickListener {
+            //Скрыть клавиатуру
+            keyboard.hideKeyboard(view)
+
+            val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
+            findNavController().navigate(action)
+//            val intent = Intent(this, ImageActivity::class.java)
+//            startActivityForResult(intent, NEW_IMAGE_ACTIVITY_REQUEST_CODE)
+        }
+
         newSectionViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
 //                finish()

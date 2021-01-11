@@ -62,11 +62,11 @@ class ImageFragment : Fragment() {
 
         recyclerView.adapter = imageAdapter
 
-        imageViewModel.imagesLiveData.observe(this, { images: List<Image> ->
+        imageViewModel.imagesLiveData.observe(viewLifecycleOwner, { images: List<Image> ->
             imageAdapter.setImages(images)
         })
 
-        imageViewModel.isLoading.observe(this, { isLoading: Boolean ->
+        imageViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
             if (isLoading) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {
@@ -74,7 +74,7 @@ class ImageFragment : Fragment() {
             }
         })
 
-        imageViewModel.error.observe(this, { error: Boolean ->
+        imageViewModel.error.observe(viewLifecycleOwner, { error: Boolean ->
             if (error) {
                 binding.noInternetConnection.visibility = View.VISIBLE
             } else {
@@ -86,7 +86,7 @@ class ImageFragment : Fragment() {
             imageViewModel.getImageList()
         }
 
-        imageViewModel.closeScreen.observe(this, { closeScreen: Boolean ->
+        imageViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
 //                finish()
             } else {

@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.dancestudiokisti.Injector
+import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.NewStudentFragmentBinding
 import javax.inject.Inject
@@ -20,6 +21,9 @@ class NewStudentFragment : Fragment() {
 
     @Inject
     lateinit var newStudentViewModel: NewStudentViewModel
+
+    @Inject
+    lateinit var keyboard: Keyboard
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,12 +74,10 @@ class NewStudentFragment : Fragment() {
                 balanceLessons
             )
 
-//            val view = this.currentFocus
-//            view?.let { v ->
-//                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-//                imm?.hideSoftInputFromWindow(v.windowToken, 0)
-//            }
+            //Скрыть клавиатуру
+            keyboard.hideKeyboard(view)
         }
+
         newStudentViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
 //                finish()

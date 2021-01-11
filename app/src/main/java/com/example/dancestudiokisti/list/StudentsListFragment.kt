@@ -61,7 +61,6 @@ class StudentsListFragment : Fragment() {
 
         recyclerView.adapter = studentsListAdapter
 
-
         studentsListViewModel.studentsList.observe(
             viewLifecycleOwner,
             { studentsList: List<Student> ->
