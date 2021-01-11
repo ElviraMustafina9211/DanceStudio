@@ -1,7 +1,9 @@
 package com.example.dancestudiokisti.newStudent
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.EditText
@@ -14,13 +16,31 @@ import javax.inject.Inject
 
 class NewStudentFragment : Fragment() {
 
-    private lateinit var binding: NewStudentFragmentBinding
+    private var newStudentFragmentBinding: NewStudentFragmentBinding? = null
 
     @Inject
     lateinit var newStudentViewModel: NewStudentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
+        Injector.instance.inject(this)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.new_student_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = NewStudentFragmentBinding.bind(view)
+        newStudentFragmentBinding = binding
+
+
 //        binding = NewStudentActivityBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
 //        title = getString(R.string.new_student_title)
@@ -56,7 +76,7 @@ class NewStudentFragment : Fragment() {
 //                imm?.hideSoftInputFromWindow(v.windowToken, 0)
 //            }
         }
-        newStudentViewModel.closeScreen.observe(this, { closeScreen: Boolean ->
+        newStudentViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
 //                finish()
             }
@@ -64,7 +84,7 @@ class NewStudentFragment : Fragment() {
 
         newStudentViewModel.getSections()
 
-        newStudentViewModel.sectionNames.observe(this, { sectionsList: List<String> ->
+        newStudentViewModel.sectionNames.observe(viewLifecycleOwner, { sectionsList: List<String> ->
             context?.let {
                 binding.spinner.adapter = ArrayAdapter(
                     it,
@@ -74,7 +94,7 @@ class NewStudentFragment : Fragment() {
             }
         })
 
-        newStudentViewModel.isLoading.observe(this, { isLoading: Boolean ->
+        newStudentViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
             if (isLoading) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {
@@ -82,7 +102,7 @@ class NewStudentFragment : Fragment() {
             }
         })
 
-        newStudentViewModel.error.observe(this, { error: Boolean ->
+        newStudentViewModel.error.observe(viewLifecycleOwner, { error: Boolean ->
             if (error) {
                 binding.noInternetConnection.visibility = View.VISIBLE
             } else {
