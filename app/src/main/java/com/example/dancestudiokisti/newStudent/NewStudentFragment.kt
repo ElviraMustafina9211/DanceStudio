@@ -73,7 +73,6 @@ class NewStudentFragment : Fragment() {
                 payment,
                 balanceLessons
             )
-
             //Скрыть клавиатуру
             keyboard.hideKeyboard(view)
         }

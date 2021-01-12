@@ -60,12 +60,6 @@ class NewSectionFragment : Fragment() {
             newSectionViewModel.createSection(sectionName, selectedImageUrl)
             //Скрыть клавиатуру
             keyboard.hideKeyboard(view)
-
-//            val view = this.currentFocus
-//            view?.let { v ->
-//                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-//                imm?.hideSoftInputFromWindow(v.windowToken, 0)
-//            }
         }
 
 
