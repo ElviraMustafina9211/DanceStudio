@@ -49,9 +49,6 @@ class StudentDetailsFragment : Fragment() {
         val binding = StudentDetailsFragmentBinding.bind(view)
         studentDetailsFragmentBinding = binding
 
-//        binding = StudentDetailsActivityBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        title = getString(R.string.student_details_title)
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //

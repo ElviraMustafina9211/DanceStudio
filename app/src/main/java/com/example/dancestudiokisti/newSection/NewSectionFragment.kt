@@ -1,24 +1,21 @@
 package com.example.dancestudiokisti.newSection
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
+import com.example.dancestudiokisti.imagePicker.ImageFragment
 import javax.inject.Inject
 
 class NewSectionFragment : Fragment() {
-
-    companion object {
-        private const val NEW_IMAGE_ACTIVITY_REQUEST_CODE = 1
-    }
 
     private var selectedImageUrl: String? = null
 
@@ -37,8 +34,10 @@ class NewSectionFragment : Fragment() {
         Injector.instance.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.new_section_fragment, container, false)
     }
 
@@ -48,11 +47,7 @@ class NewSectionFragment : Fragment() {
         newSectionFragmentBinding = binding
 
 
-//        binding = NewSectionActivityBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        title = getString(R.string.new_section_title)
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//
 
         binding.saveSectionButton.setOnClickListener {
             val editSection: EditText = binding.editText
@@ -75,7 +70,7 @@ class NewSectionFragment : Fragment() {
 
         newSectionViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
-//                finish()
+                findNavController().navigateUp()
             }
         })
         newSectionViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
@@ -93,23 +88,24 @@ class NewSectionFragment : Fragment() {
                 binding.noInternetConnection.visibility = View.GONE
             }
         })
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
+            ImageFragment.EXTRA_SELECTED_LINK
+        )?.observe(viewLifecycleOwner) { result ->
+                selectedImageUrl = result
+                Toast.makeText(context, "Картинка установлена успешно", Toast.LENGTH_LONG).show()
+        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+
+
+//     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
 //        if (requestCode == NEW_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            selectedImageUrl = data?.getStringExtra(ImageActivity.EXTRA_SELECTED_LINK)
-//            Toast.makeText(
-//                applicationContext,
-//                "Картинка установлена успешно",
-//                Toast.LENGTH_LONG
-//            ).show()
+//            selectedImageUrl = data?.getStringExtra(ImageFragment.EXTRA_SELECTED_LINK)
+//            Toast.makeText(context, "Картинка установлена успешно", Toast.LENGTH_LONG).show()
 //        } else {
-//            Toast.makeText(
-//                applicationContext,
-//                "Не выбрана картинка",
-//                Toast.LENGTH_LONG
-//            ).show()
+//            Toast.makeText(context, "Не выбрана картинка", Toast.LENGTH_LONG).show()
 //        }
-    }
+//    }
 }

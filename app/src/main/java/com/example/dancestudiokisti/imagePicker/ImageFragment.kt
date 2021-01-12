@@ -1,16 +1,14 @@
 package com.example.dancestudiokisti.imagePicker
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.ImagePickerFragmentBinding
-import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
-import com.example.dancestudiokisti.newSection.NewSectionViewModel
 import javax.inject.Inject
 
 class ImageFragment : Fragment() {
@@ -32,8 +30,10 @@ class ImageFragment : Fragment() {
         Injector.instance.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.image_picker_fragment, container, false)
     }
 
@@ -42,9 +42,6 @@ class ImageFragment : Fragment() {
         val binding = ImagePickerFragmentBinding.bind(view)
         imagePickerFragmentBinding = binding
 
-//        binding = ImagePickerActivityBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        title = "Выбор картинки для секции"
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -54,8 +51,15 @@ class ImageFragment : Fragment() {
 
         val recyclerView = binding.recyclerviewImagePickerFragment
         val imageAdapter = ImageAdapter { selectedLink ->
-            val intent = Intent()
-            intent.putExtra(EXTRA_SELECTED_LINK, selectedLink)
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                EXTRA_SELECTED_LINK,
+                selectedLink
+            )
+            findNavController().navigateUp()
+
+
+//            val intent = Intent()
+//            intent.putExtra(EXTRA_SELECTED_LINK, selectedLink)
 //            setResult(RESULT_OK, intent)
 //            finish()
         }
@@ -88,7 +92,7 @@ class ImageFragment : Fragment() {
 
         imageViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
-//                finish()
+                findNavController().navigateUp()
             } else {
                 binding.progressBar.visibility = View.VISIBLE
             }

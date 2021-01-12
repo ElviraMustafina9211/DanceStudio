@@ -32,17 +32,12 @@
     <string name="new_section_title">Добавление новой секции</string>
     <string name="new_student_title">Добавление нового ученика</string>
     <string name="sections_list_title">Список секций</string>
-    <string name="pick_image">Выберите картинку</string>
+    <string name="pick_image_title">Выберите картинку</string>
     <string name="hint_image">Выберите картинку для секции</string>
     <string name="button_delete">Удалить ученика</string>
     <string name="add_student">Add student</string>
     <string name="add_section">Add section</string>
     <string name="button_save_section">Сохранить секцию</string>
-    <string name="list_sections_fragment_label">Section List Fragment</string>
-    <string name="list_students_fragment_label">Students List Fragment</string>
-    <string name="student_details_fragment_label">Student Details Fragment</string>
-    <string name="new_section_fragment_label">New Section Fragment</string>
-    <string name="image_picker_fragment_label">Image Fragment</string>
-    <string name="new_student_fragment_label">New Student Fragment</string>
     <string name="data_saved">Данные сохранены</string>
+    <string name="title_image_picker">Выберите картинку</string>
 </resources>

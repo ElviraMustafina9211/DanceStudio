@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
@@ -44,10 +45,6 @@ class NewStudentFragment : Fragment() {
         val binding = NewStudentFragmentBinding.bind(view)
         newStudentFragmentBinding = binding
 
-
-//        binding = NewStudentActivityBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        title = getString(R.string.new_student_title)
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -79,7 +76,7 @@ class NewStudentFragment : Fragment() {
 
         newStudentViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
             if (closeScreen) {
-//                finish()
+                findNavController().navigateUp()
             }
         })
 

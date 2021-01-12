@@ -42,6 +42,7 @@ class StudentsListFragment : Fragment() {
         val binding = ListStudentsFragmentBinding.bind(view)
         listStudentsFragmentBinding = binding
 
+
         binding.fabAddStudent.setOnClickListener {
                 val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
                 findNavController().navigate(action)

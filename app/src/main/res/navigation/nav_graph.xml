@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/SectionsListFragment"
         android:name="com.example.dancestudiokisti.sectionsList.SectionsListFragment"
-        android:label="@string/list_sections_fragment_label"
-        tools:layout="@layout/list_sections_fragment">
+        android:label="Title: {title}"
+    tools:layout="@layout/list_sections_fragment">
 
         <action
             android:id="@+id/action_SectionsListFragment_to_StudentsListFragment"
@@ -20,10 +20,11 @@
             app:destination="@id/NewSectionFragment" />
     </fragment>
 
+
     <fragment
         android:id="@+id/StudentsListFragment"
         android:name="com.example.dancestudiokisti.list.StudentsListFragment"
-        android:label="@string/list_students_fragment_label"
+        android:label="@string/students_list_title"
         tools:layout="@layout/list_students_fragment">
 
         <argument
@@ -42,7 +43,7 @@
     <fragment
         android:id="@+id/StudentDetailsFragment"
         android:name="com.example.dancestudiokisti.details.StudentDetailsFragment"
-        android:label="@string/student_details_fragment_label"
+        android:label="@string/student_details_title"
         tools:layout="@layout/student_details_fragment">
 
         <argument
@@ -53,7 +54,7 @@
     <fragment
         android:id="@+id/NewSectionFragment"
         android:name="com.example.dancestudiokisti.newSection.NewSectionFragment"
-        android:label="@string/new_section_fragment_label"
+        android:label="@string/new_section_title"
         tools:layout="@layout/new_section_fragment">
 
         <action
@@ -64,14 +65,14 @@
     <fragment
         android:id="@+id/ImageFragment"
         android:name="com.example.dancestudiokisti.imagePicker.ImageFragment"
-        android:label="@string/image_picker_fragment_label"
+        android:label="@string/pick_image_title"
         tools:layout="@layout/image_picker_fragment">
     </fragment>
 
     <fragment
         android:id="@+id/NewStudentFragment"
         android:name="com.example.dancestudiokisti.newStudent.NewStudentFragment"
-        android:label="@string/new_student_fragment_label"
+        android:label="@string/new_student_title"
         tools:layout="@layout/new_student_fragment">
     </fragment>
 

@@ -31,8 +31,12 @@ class SectionsListFragment : Fragment() {
         Injector.instance.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.list_sections_fragment, container, false)
     }
 
@@ -40,17 +44,17 @@ class SectionsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = ListSectionsFragmentBinding.bind(view)
         listSectionsFragmentBinding = binding
-//        (activity as MainActivity).supportActionBar?.title = getString(R.string.sections_list_title)
-//        (activity as ActionBarActivity?).getSupportActionBar().setDisplayHomeAsUpEnabled(true)
+//                    title = "Список секций";
 
-//        title = "Выбор картинки для секции"
+
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         binding.fabAddSection.setOnClickListener {
             val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
-            findNavController().navigate(action)        }
+            findNavController().navigate(action)
+        }
 
 
         sectionsListViewModel.getSectionsList()
@@ -62,7 +66,10 @@ class SectionsListFragment : Fragment() {
             }
         }, object : OnSectionClickListener {
             override fun onClick(section: Section) {
-                val action = SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(section.name)
+                val action =
+                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(
+                        section.name
+                    )
                 findNavController().navigate(action)
             }
         })
