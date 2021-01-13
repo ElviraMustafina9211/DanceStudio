@@ -4,6 +4,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface ImageApi {
-    @GET("Image")
+    @GET("image")
     fun getImageList(): Single<List<Image>>
 }
