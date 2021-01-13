@@ -44,7 +44,7 @@ class SectionsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = ListSectionsFragmentBinding.bind(view)
         listSectionsFragmentBinding = binding
-//                    title = "Список секций";
+        binding.appbar.toolbar.title = getString(R.string.sections_list_title)
 
 
 //        setSupportActionBar(binding.toolbar)

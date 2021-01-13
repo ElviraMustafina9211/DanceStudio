@@ -15,6 +15,7 @@ import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.Student
 import com.example.dancestudiokisti.databinding.StudentDetailsFragmentBinding
+import com.example.dancestudiokisti.views.Toolbars
 import javax.inject.Inject
 
 
@@ -48,6 +49,8 @@ class StudentDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = StudentDetailsFragmentBinding.bind(view)
         studentDetailsFragmentBinding = binding
+        binding.appbar.toolbar.title = getString(R.string.student_details_title)
+        Toolbars.enableBackButton(view, findNavController())
 
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)

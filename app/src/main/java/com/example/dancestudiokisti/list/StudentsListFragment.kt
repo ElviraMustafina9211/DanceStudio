@@ -2,6 +2,7 @@ package com.example.dancestudiokisti.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.Student
 import com.example.dancestudiokisti.databinding.ListStudentsFragmentBinding
+import com.example.dancestudiokisti.views.Toolbars
 import javax.inject.Inject
 
 
@@ -41,11 +43,15 @@ class StudentsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = ListStudentsFragmentBinding.bind(view)
         listStudentsFragmentBinding = binding
+        binding.appbar.toolbar.title = getString(R.string.students_list_title)
+        Toolbars.enableBackButton(view, findNavController())
+
 
 
         binding.fabAddStudent.setOnClickListener {
-                val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
-                findNavController().navigate(action)
+            val action =
+                StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
+            findNavController().navigate(action)
         }
 
 
@@ -55,7 +61,10 @@ class StudentsListFragment : Fragment() {
         val recyclerView = binding.recyclerviewListStudentsFragment
         val studentsListAdapter = StudentsListAdapter(object : OnStudentClickListener {
             override fun onClicked(objectId: String) {
-                val action = StudentsListFragmentDirections.actionStudentsListFragmentToStudentDetailsFragment(objectId)
+                val action =
+                    StudentsListFragmentDirections.actionStudentsListFragmentToStudentDetailsFragment(
+                        objectId
+                    )
                 findNavController().navigate(action)
             }
         })
@@ -98,5 +107,15 @@ class StudentsListFragment : Fragment() {
         super.onResume()
 //        val sectionName = intent.getStringExtra("sectionName")
         studentsListViewModel.getFullNames(args.sectionName)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().navigateUp()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

@@ -39,5 +39,4 @@
     <string name="add_section">Add section</string>
     <string name="button_save_section">Сохранить секцию</string>
     <string name="data_saved">Данные сохранены</string>
-    <string name="title_image_picker">Выберите картинку</string>
 </resources>

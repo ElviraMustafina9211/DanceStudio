@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.ImagePickerFragmentBinding
+import com.example.dancestudiokisti.views.Toolbars
 import javax.inject.Inject
 
 class ImageFragment : Fragment() {
@@ -41,6 +42,8 @@ class ImageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = ImagePickerFragmentBinding.bind(view)
         imagePickerFragmentBinding = binding
+        binding.appbar.toolbar.title = getString(R.string.pick_image_title)
+        Toolbars.enableBackButton(view, findNavController())
 
 //        setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)

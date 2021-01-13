@@ -13,6 +13,7 @@ import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.NewSectionFragmentBinding
 import com.example.dancestudiokisti.imagePicker.ImageFragment
+import com.example.dancestudiokisti.views.Toolbars
 import javax.inject.Inject
 
 class NewSectionFragment : Fragment() {
@@ -45,6 +46,8 @@ class NewSectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = NewSectionFragmentBinding.bind(view)
         newSectionFragmentBinding = binding
+        binding.appbar.toolbar.title = getString(R.string.new_section_title)
+        Toolbars.enableBackButton(view, findNavController())
 
 
 //
