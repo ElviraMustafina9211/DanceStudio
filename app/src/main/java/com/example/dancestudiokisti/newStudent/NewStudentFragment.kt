@@ -48,10 +48,6 @@ class NewStudentFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.new_student_title)
         Toolbars.enableBackButton(view, findNavController())
 
-
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         Injector.instance.inject(this)
 
         binding.saveButton.setOnClickListener {

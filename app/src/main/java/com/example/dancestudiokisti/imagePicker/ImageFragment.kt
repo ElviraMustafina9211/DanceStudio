@@ -45,9 +45,6 @@ class ImageFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.pick_image_title)
         Toolbars.enableBackButton(view, findNavController())
 
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         Injector.instance.inject(this)
 
         imageViewModel.getImageList()
@@ -59,12 +56,6 @@ class ImageFragment : Fragment() {
                 selectedLink
             )
             findNavController().navigateUp()
-
-
-//            val intent = Intent()
-//            intent.putExtra(EXTRA_SELECTED_LINK, selectedLink)
-//            setResult(RESULT_OK, intent)
-//            finish()
         }
 
         recyclerView.adapter = imageAdapter

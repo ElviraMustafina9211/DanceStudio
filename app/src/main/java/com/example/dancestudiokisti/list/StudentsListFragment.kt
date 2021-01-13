@@ -46,16 +46,12 @@ class StudentsListFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.students_list_title)
         Toolbars.enableBackButton(view, findNavController())
 
-
-
         binding.fabAddStudent.setOnClickListener {
             val action =
                 StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
             findNavController().navigate(action)
         }
 
-
-//        val sectionName = intent.getStringExtra("sectionName")
         studentsListViewModel.getFullNames(args.sectionName)
 
         val recyclerView = binding.recyclerviewListStudentsFragment
