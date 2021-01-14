@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
@@ -18,12 +19,12 @@ import javax.inject.Inject
 
 class NewSectionFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory : NewSectionViewModelFactory
+
     private var selectedImageUrl: String? = null
 
     private var newSectionFragmentBinding: NewSectionFragmentBinding? = null
-
-    @Inject
-    lateinit var newSectionViewModel: NewSectionViewModel
 
     @Inject
     lateinit var keyboard: Keyboard
@@ -31,7 +32,6 @@ class NewSectionFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
@@ -49,8 +49,8 @@ class NewSectionFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.new_section_title)
         Toolbars.enableBackButton(view, findNavController())
 
-
-//
+        val newSectionViewModel = ViewModelProvider(this, viewModelFactory).get(
+            NewSectionViewModel::class.java)
 
         binding.saveSectionButton.setOnClickListener {
             val editSection: EditText = binding.editText
@@ -67,8 +67,6 @@ class NewSectionFragment : Fragment() {
 
             val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
             findNavController().navigate(action)
-//            val intent = Intent(this, ImageActivity::class.java)
-//            startActivityForResult(intent, NEW_IMAGE_ACTIVITY_REQUEST_CODE)
         }
 
         newSectionViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
@@ -91,6 +89,8 @@ class NewSectionFragment : Fragment() {
                 binding.noInternetConnection.visibility = View.GONE
             }
         })
+
+
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
             ImageFragment.EXTRA_SELECTED_LINK

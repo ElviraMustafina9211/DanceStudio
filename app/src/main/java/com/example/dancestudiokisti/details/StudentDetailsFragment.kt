@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dancestudiokisti.Injector
@@ -21,10 +22,10 @@ import javax.inject.Inject
 
 class StudentDetailsFragment : Fragment() {
 
-    private var studentDetailsFragmentBinding: StudentDetailsFragmentBinding? = null
-
     @Inject
-    lateinit var studentDetailsViewModel: StudentDetailsViewModel
+    lateinit var viewModelFactory : StudentDetailsViewModelFactory
+
+    private var studentDetailsFragmentBinding: StudentDetailsFragmentBinding? = null
 
     @Inject
     lateinit var keyboard: Keyboard
@@ -34,7 +35,6 @@ class StudentDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
@@ -52,12 +52,11 @@ class StudentDetailsFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.student_details_title)
         Toolbars.enableBackButton(view, findNavController())
 
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//
-//        val objectId = intent.getStringExtra("objectId")
-        studentDetailsViewModel.getStudentDetails(args.objectId)
+        val studentDetailsViewModel = ViewModelProvider(this, viewModelFactory).get(
+            StudentDetailsViewModel::class.java)
 
+
+        studentDetailsViewModel.getStudentDetails(args.objectId)
 
         //При нажатии на кнопку "Отправить сообщение" откроется экран для отправки SMS
         binding.sendMessage.setOnClickListener {
@@ -65,7 +64,7 @@ class StudentDetailsFragment : Fragment() {
             intent.data = Uri.parse("sms:")
             intent.putExtra(
                 Intent.EXTRA_TEXT,
-                "Для продолжения занятий, необходимо приобрести абонемент"
+                getString(R.string.buy_subscription)
             )
             startActivity(intent)
         }

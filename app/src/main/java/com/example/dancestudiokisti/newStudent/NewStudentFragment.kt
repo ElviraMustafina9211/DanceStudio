@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
@@ -19,10 +20,10 @@ import javax.inject.Inject
 
 class NewStudentFragment : Fragment() {
 
-    private var newStudentFragmentBinding: NewStudentFragmentBinding? = null
-
     @Inject
-    lateinit var newStudentViewModel: NewStudentViewModel
+    lateinit var viewModelFactory : NewStudentViewModelFactory
+
+    private var newStudentFragmentBinding: NewStudentFragmentBinding? = null
 
     @Inject
     lateinit var keyboard: Keyboard
@@ -30,7 +31,6 @@ class NewStudentFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
@@ -48,7 +48,8 @@ class NewStudentFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.new_student_title)
         Toolbars.enableBackButton(view, findNavController())
 
-        Injector.instance.inject(this)
+        val newStudentViewModel = ViewModelProvider(this, viewModelFactory).get(
+            NewStudentViewModel::class.java)
 
         binding.saveButton.setOnClickListener {
             val sectionSpinner: Spinner = binding.spinner

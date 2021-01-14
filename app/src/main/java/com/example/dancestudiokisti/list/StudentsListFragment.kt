@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dancestudiokisti.Injector
@@ -18,17 +19,16 @@ import javax.inject.Inject
 
 class StudentsListFragment : Fragment() {
 
-    private var listStudentsFragmentBinding: ListStudentsFragmentBinding? = null
-
     @Inject
-    lateinit var studentsListViewModel: StudentsListViewModel
+    lateinit var viewModelFactory : StudentsListViewModelFactory
+
+    private var listStudentsFragmentBinding: ListStudentsFragmentBinding? = null
 
     private val args: StudentsListFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
@@ -45,6 +45,9 @@ class StudentsListFragment : Fragment() {
         listStudentsFragmentBinding = binding
         binding.appbar.toolbar.title = getString(R.string.students_list_title)
         Toolbars.enableBackButton(view, findNavController())
+
+        val studentsListViewModel = ViewModelProvider(this, viewModelFactory).get(
+            StudentsListViewModel::class.java)
 
         binding.fabAddStudent.setOnClickListener {
             val action =
@@ -99,11 +102,10 @@ class StudentsListFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-//        val sectionName = intent.getStringExtra("sectionName")
-        studentsListViewModel.getFullNames(args.sectionName)
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        studentsListViewModel.getFullNames(args.sectionName)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

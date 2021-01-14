@@ -25,9 +25,6 @@ class SectionsItemHolder(view: View, onSectionLongPressListener: OnSectionLongPr
     init {
         view.setOnClickListener {
             onSectionClickListener.onClick(section)
-//            val intent = Intent(view.context, StudentsListActivity::class.java)
-//            intent.putExtra("sectionName", section.name)
-//            view.context.startActivity(intent)
         }
 
         view.setOnLongClickListener{

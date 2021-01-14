@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
@@ -21,13 +22,11 @@ class ImageFragment : Fragment() {
     private var imagePickerFragmentBinding: ImagePickerFragmentBinding? = null
 
     @Inject
-    lateinit var imageViewModel: ImageViewModel
-
+    lateinit var viewModelFactory : ImageViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
 
@@ -45,7 +44,8 @@ class ImageFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.pick_image_title)
         Toolbars.enableBackButton(view, findNavController())
 
-        Injector.instance.inject(this)
+        val imageViewModel = ViewModelProvider(this, viewModelFactory).get(
+            ImageViewModel::class.java)
 
         imageViewModel.getImageList()
 

@@ -8,8 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class SectionsListViewModel(private val sectionsListRepository: SectionsListRepository) :
-    ViewModel() {
+class SectionsListViewModel(private val sectionsListRepository: SectionsListRepository) : ViewModel() {
 
     private val _sectionsList: MutableLiveData<List<Section>> = MutableLiveData<List<Section>>()
     val sectionsList: LiveData<List<Section>> = _sectionsList

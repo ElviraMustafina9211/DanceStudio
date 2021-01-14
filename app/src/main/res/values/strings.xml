@@ -39,4 +39,5 @@
     <string name="add_section">Add section</string>
     <string name="button_save_section">Сохранить секцию</string>
     <string name="data_saved">Данные сохранены</string>
+    <string name="buy_subscription">Для продолжения занятий, необходимо приобрести абонемент</string>
 </resources>

@@ -14,10 +14,6 @@ class StudentsItemHolder(view: View, onStudentClickListener: OnStudentClickListe
     init {
         view.setOnClickListener {
             onStudentClickListener.onClicked(objectId)
-
-//            val intent = Intent(view.context, StudentDetailsActivity::class.java)
-//            intent.putExtra("objectId",  objectId)
-//            view.context.startActivity(intent)
         }
     }
 

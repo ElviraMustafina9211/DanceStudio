@@ -15,6 +15,8 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
     private val _error: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val error: LiveData<Boolean> = _error
 
+    
+
     private val _closeScreen: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val closeScreen: LiveData<Boolean> = _closeScreen
 

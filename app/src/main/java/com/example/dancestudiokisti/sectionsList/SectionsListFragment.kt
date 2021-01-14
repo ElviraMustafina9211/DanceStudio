@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
@@ -19,19 +20,17 @@ import javax.inject.Inject
 
 class SectionsListFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory : SectionsListViewModelFactory
+
     private var listSectionsFragmentBinding: ListSectionsFragmentBinding? = null
 
-    @Inject
-    lateinit var sectionsListViewModel: SectionsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //каждый раз пересоздает ViewModel, ViewModel НЕ пересоздается - это правило
         Injector.instance.inject(this)
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,16 +45,12 @@ class SectionsListFragment : Fragment() {
         listSectionsFragmentBinding = binding
         binding.appbar.toolbar.title = getString(R.string.sections_list_title)
 
-
-//        setSupportActionBar(binding.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        val sectionsListViewModel = ViewModelProvider(this, viewModelFactory).get(SectionsListViewModel::class.java)
 
         binding.fabAddSection.setOnClickListener {
             val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
             findNavController().navigate(action)
         }
-
 
         sectionsListViewModel.getSectionsList()
 
@@ -102,12 +97,6 @@ class SectionsListFragment : Fragment() {
         binding.noInternetConnection.setOnClickListener {
             sectionsListViewModel.getSectionsList()
         }
-
-//        binding.fabAddSection.setOnClickListener {
-//            val intent = Intent(this, NewSectionFragment::class.java)
-//            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-//            startActivity(intent)
-//        }
 
         swipeRefreshLayout.setOnRefreshListener {
             sectionsListViewModel.getSectionsList()

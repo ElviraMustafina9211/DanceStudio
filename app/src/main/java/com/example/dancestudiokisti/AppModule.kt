@@ -1,17 +1,17 @@
 package com.example.dancestudiokisti
 
 import com.example.dancestudiokisti.details.StudentDetailsRepository
-import com.example.dancestudiokisti.details.StudentDetailsViewModel
+import com.example.dancestudiokisti.details.StudentDetailsViewModelFactory
 import com.example.dancestudiokisti.imagePicker.ImageRepository
-import com.example.dancestudiokisti.imagePicker.ImageViewModel
+import com.example.dancestudiokisti.imagePicker.ImageViewModelFactory
 import com.example.dancestudiokisti.list.StudentsListRepository
-import com.example.dancestudiokisti.list.StudentsListViewModel
+import com.example.dancestudiokisti.list.StudentsListViewModelFactory
 import com.example.dancestudiokisti.newSection.NewSectionRepository
-import com.example.dancestudiokisti.newSection.NewSectionViewModel
+import com.example.dancestudiokisti.newSection.NewSectionViewModelFactory
 import com.example.dancestudiokisti.newStudent.NewStudentRepository
-import com.example.dancestudiokisti.newStudent.NewStudentViewModel
+import com.example.dancestudiokisti.newStudent.NewStudentViewModelFactory
 import com.example.dancestudiokisti.sectionsList.SectionsListRepository
-import com.example.dancestudiokisti.sectionsList.SectionsListViewModel
+import com.example.dancestudiokisti.sectionsList.SectionsListViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -19,13 +19,13 @@ import javax.inject.Singleton
 @Module
 class AppModule {
     @Provides
-    fun studentDetailRepository(): StudentDetailsRepository {
+    fun studentDetailsRepository(): StudentDetailsRepository {
         return StudentDetailsRepository()
     }
 
     @Provides
-    fun studentDetailsViewModel(studentDetailsRepository: StudentDetailsRepository): StudentDetailsViewModel {
-        return StudentDetailsViewModel(studentDetailsRepository)
+    fun studentDetailsViewModelFactory(studentDetailsRepository: StudentDetailsRepository): StudentDetailsViewModelFactory {
+        return StudentDetailsViewModelFactory(studentDetailsRepository)
     }
 
     @Provides
@@ -34,8 +34,8 @@ class AppModule {
     }
 
     @Provides
-    fun studentsListViewModel(studentsListRepository: StudentsListRepository): StudentsListViewModel {
-        return StudentsListViewModel(studentsListRepository)
+    fun studentsListViewModelFactory (studentsListRepository: StudentsListRepository): StudentsListViewModelFactory {
+        return StudentsListViewModelFactory(studentsListRepository)
     }
 
     @Provides
@@ -44,8 +44,8 @@ class AppModule {
     }
 
     @Provides
-    fun newStudentViewModel(newStudentRepository: NewStudentRepository): NewStudentViewModel {
-        return NewStudentViewModel(newStudentRepository, sectionsListRepository())
+    fun newStudentViewModelFactory(newStudentRepository: NewStudentRepository): NewStudentViewModelFactory {
+        return NewStudentViewModelFactory(newStudentRepository, sectionsListRepository())
     }
 
     @Provides
@@ -54,8 +54,8 @@ class AppModule {
     }
 
     @Provides
-    fun newSectionViewModel(newSectionRepository: NewSectionRepository): NewSectionViewModel {
-        return NewSectionViewModel(newSectionRepository)
+    fun newSectionViewModelFactory(newSectionRepository: NewSectionRepository): NewSectionViewModelFactory {
+        return NewSectionViewModelFactory(newSectionRepository)
     }
 
     @Provides
@@ -64,8 +64,8 @@ class AppModule {
     }
 
     @Provides
-    fun sectionsListViewModel(sectionsListRepository: SectionsListRepository): SectionsListViewModel {
-        return SectionsListViewModel(sectionsListRepository)
+    fun sectionsListViewModelFactory (sectionsListRepository: SectionsListRepository): SectionsListViewModelFactory {
+        return SectionsListViewModelFactory (sectionsListRepository)
     }
 
     @Provides
@@ -74,8 +74,8 @@ class AppModule {
     }
 
     @Provides
-    fun imageViewModel(imageRepository: ImageRepository): ImageViewModel {
-        return ImageViewModel(imageRepository)
+    fun imageViewModelFactory(imageRepository: ImageRepository): ImageViewModelFactory {
+        return ImageViewModelFactory(imageRepository)
     }
 
     @Provides
