@@ -90,25 +90,17 @@ class NewSectionFragment : Fragment() {
             }
         })
 
-
+        newSectionViewModel.chooseImageError.observe(viewLifecycleOwner, {chooseImageError: Boolean ->
+            if (chooseImageError) {
+                Toast.makeText(context, getString(R.string.please_choose_image), Toast.LENGTH_LONG).show()
+            }
+        })
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
             ImageFragment.EXTRA_SELECTED_LINK
         )?.observe(viewLifecycleOwner) { result ->
                 selectedImageUrl = result
-                Toast.makeText(context, "Картинка установлена успешно", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.image_set_successfully), Toast.LENGTH_LONG).show()
         }
     }
-
-
-
-//     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == NEW_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            selectedImageUrl = data?.getStringExtra(ImageFragment.EXTRA_SELECTED_LINK)
-//            Toast.makeText(context, "Картинка установлена успешно", Toast.LENGTH_LONG).show()
-//        } else {
-//            Toast.makeText(context, "Не выбрана картинка", Toast.LENGTH_LONG).show()
-//        }
-//    }
 }

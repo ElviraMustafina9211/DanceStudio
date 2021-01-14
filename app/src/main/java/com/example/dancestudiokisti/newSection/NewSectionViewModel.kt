@@ -15,7 +15,8 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
     private val _error: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
     val error: LiveData<Boolean> = _error
 
-    
+    private val _chooseImageError: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val chooseImageError: LiveData<Boolean> = _chooseImageError
 
     private val _closeScreen: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val closeScreen: LiveData<Boolean> = _closeScreen
@@ -42,7 +43,7 @@ class NewSectionViewModel(private val newSectionRepository: NewSectionRepository
                     }, { _error.value = true; _isLoading.value = false })
             }
         } else {
-            _isLoading.value = true
+            _chooseImageError.value = true
         }
     }
 }
