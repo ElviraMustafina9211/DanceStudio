@@ -33,7 +33,7 @@
     <string name="new_student_title">Добавление нового ученика</string>
     <string name="sections_list_title">Список секций</string>
     <string name="pick_image_title">Выберите картинку</string>
-    <string name="hint_image">Выберите картинку для секции</string>
+    <string name="hint_image">Выберите картинку</string>
     <string name="button_delete">Удалить ученика</string>
     <string name="add_student">Add student</string>
     <string name="add_section">Add section</string>
@@ -42,4 +42,5 @@
     <string name="buy_subscription">Для продолжения занятий, необходимо приобрести абонемент</string>
     <string name="please_choose_image">Пожалуйста, установите картинку</string>
     <string name="image_set_successfully">Картинка установлена успешно</string>
+    <string name="selected_image">selected image</string>
 </resources>

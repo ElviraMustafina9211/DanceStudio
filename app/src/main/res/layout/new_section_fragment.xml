@@ -23,11 +23,12 @@
 
         <EditText
             android:id="@+id/edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_marginTop="8dp"
             android:autofillHints=""
             android:background="@drawable/border_dances"
+            android:layout_gravity="center"
             android:gravity="center"
             android:hint="@string/hint_section"
             android:inputType="textAutoComplete"
@@ -37,9 +38,10 @@
 
         <TextView
             android:id="@+id/image_picker"
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_width="250dp"
             android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/border_dances"
             android:gravity="center"
             android:hint="@string/hint_image"
@@ -47,12 +49,23 @@
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
 
+        <ImageView
+            android:id="@+id/show_selected_image"
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/border_dances"
+            android:gravity="center"
+            android:visibility="gone"
+            android:contentDescription="@string/selected_image" />
+
         <Button
             android:id="@+id/save_section_button"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/border_buttons"
             android:text="@string/button_save_section"
             android:textColor="?android:attr/textColorPrimary"/>

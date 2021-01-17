@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
@@ -20,7 +25,7 @@ import javax.inject.Inject
 class NewSectionFragment : Fragment() {
 
     @Inject
-    lateinit var viewModelFactory : NewSectionViewModelFactory
+    lateinit var viewModelFactory: NewSectionViewModelFactory
 
     private var selectedImageUrl: String? = null
 
@@ -28,6 +33,7 @@ class NewSectionFragment : Fragment() {
 
     @Inject
     lateinit var keyboard: Keyboard
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +56,8 @@ class NewSectionFragment : Fragment() {
         Toolbars.enableBackButton(view, findNavController())
 
         val newSectionViewModel = ViewModelProvider(this, viewModelFactory).get(
-            NewSectionViewModel::class.java)
+            NewSectionViewModel::class.java
+        )
 
         binding.saveSectionButton.setOnClickListener {
             val editSection: EditText = binding.editText
@@ -90,17 +97,32 @@ class NewSectionFragment : Fragment() {
             }
         })
 
-        newSectionViewModel.chooseImageError.observe(viewLifecycleOwner, {chooseImageError: Boolean ->
-            if (chooseImageError) {
-                Toast.makeText(context, getString(R.string.please_choose_image), Toast.LENGTH_LONG).show()
-            }
-        })
+        newSectionViewModel.chooseImageError.observe(
+            viewLifecycleOwner,
+            { chooseImageError: Boolean ->
+                if (chooseImageError) {
+                    Toast.makeText(
+                        context,
+                        getString(R.string.please_choose_image),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+
+        val ivSelectedImage: ImageView = binding.showSelectedImage
+
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
             ImageFragment.EXTRA_SELECTED_LINK
         )?.observe(viewLifecycleOwner) { result ->
-                selectedImageUrl = result
-                Toast.makeText(context, getString(R.string.image_set_successfully), Toast.LENGTH_LONG).show()
+            selectedImageUrl = result
+            Glide.with(view.context)
+                .load(selectedImageUrl)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(12)))
+                .into(ivSelectedImage)
+            ivSelectedImage.visibility = View.VISIBLE
+
+        //                Toast.makeText(context, getString(R.string.image_set_successfully), Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.dancestudiokisti.R
 
 class ImagePickerItemHolder(view: View, onImageClickListener: OnImageClickListener) : RecyclerView.ViewHolder(view) {
+
     private lateinit var linkOfImage: String
 
     private val ivLinkOfImage: ImageView = view.findViewById(R.id.image_for_section)
