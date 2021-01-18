@@ -3,7 +3,6 @@ package com.example.dancestudiokisti.sectionsList
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
@@ -33,8 +32,7 @@ class SectionsListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.list_sections_fragment, container, false)
     }
@@ -44,8 +42,12 @@ class SectionsListFragment : Fragment() {
         val binding = ListSectionsFragmentBinding.bind(view)
         listSectionsFragmentBinding = binding
         binding.appbar.toolbar.title = getString(R.string.sections_list_title)
+        binding.appbar.toolbar.inflateMenu(R.menu.menu)
 
-        val sectionsListViewModel = ViewModelProvider(this, viewModelFactory).get(SectionsListViewModel::class.java)
+
+        val sectionsListViewModel = ViewModelProvider(this, viewModelFactory).get(
+            SectionsListViewModel::class.java
+        )
 
         binding.fabAddSection.setOnClickListener {
             val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
@@ -101,21 +103,16 @@ class SectionsListFragment : Fragment() {
         swipeRefreshLayout.setOnRefreshListener {
             sectionsListViewModel.getSectionsList()
         }
-    }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.menu, menu)
-//        return true
-//    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.change_mode -> {
-                switchMode()
-                return true
+        binding.appbar.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.change_mode -> {
+                    switchMode()
+                    true
+                }
+                else -> false
             }
         }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun switchMode() {

@@ -2,7 +2,6 @@ package com.example.dancestudiokisti.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -58,6 +57,7 @@ class StudentsListFragment : Fragment() {
         studentsListViewModel.getFullNames(args.sectionName)
 
         val recyclerView = binding.recyclerviewListStudentsFragment
+
         val studentsListAdapter = StudentsListAdapter(object : OnStudentClickListener {
             override fun onClicked(objectId: String) {
                 val action =
@@ -106,14 +106,4 @@ class StudentsListFragment : Fragment() {
 //        super.onResume()
 //        studentsListViewModel.getFullNames(args.sectionName)
 //    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                findNavController().navigateUp()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

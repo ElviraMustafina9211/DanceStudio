@@ -55,7 +55,6 @@ class StudentDetailsFragment : Fragment() {
         val studentDetailsViewModel = ViewModelProvider(this, viewModelFactory).get(
             StudentDetailsViewModel::class.java)
 
-
         studentDetailsViewModel.getStudentDetails(args.objectId)
 
         //При нажатии на кнопку "Отправить сообщение" откроется экран для отправки SMS
