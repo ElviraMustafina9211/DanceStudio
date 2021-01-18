@@ -34,7 +34,6 @@ class NewSectionFragment : Fragment() {
     @Inject
     lateinit var keyboard: Keyboard
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -67,13 +66,8 @@ class NewSectionFragment : Fragment() {
             keyboard.hideKeyboard(view)
         }
 
-
         binding.imagePicker.setOnClickListener {
-            //Скрыть клавиатуру
-            keyboard.hideKeyboard(view)
-
-            val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
-            findNavController().navigate(action)
+            selectImage()
         }
 
         newSectionViewModel.closeScreen.observe(viewLifecycleOwner, { closeScreen: Boolean ->
@@ -101,16 +95,11 @@ class NewSectionFragment : Fragment() {
             viewLifecycleOwner,
             { chooseImageError: Boolean ->
                 if (chooseImageError) {
-                    Toast.makeText(
-                        context,
-                        getString(R.string.please_choose_image),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(context, getString(R.string.please_choose_image), Toast.LENGTH_LONG).show()
                 }
             })
 
         val ivSelectedImage: ImageView = binding.showSelectedImage
-
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
             ImageFragment.EXTRA_SELECTED_LINK
@@ -121,8 +110,19 @@ class NewSectionFragment : Fragment() {
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(12)))
                 .into(ivSelectedImage)
             ivSelectedImage.visibility = View.VISIBLE
+            binding.imagePicker.visibility = View.GONE
 
-        //                Toast.makeText(context, getString(R.string.image_set_successfully), Toast.LENGTH_LONG).show()
         }
+
+        binding.showSelectedImage.setOnClickListener {
+            selectImage()
+        }
+    }
+
+    private fun selectImage() {
+        val action = NewSectionFragmentDirections.actionNewSectionFragmentToImageFragment()
+        findNavController().navigate(action)
+        //Скрыть клавиатуру
+        view?.let { keyboard.hideKeyboard(it) }
     }
 }
