@@ -49,8 +49,7 @@ class StudentsListFragment : Fragment() {
             StudentsListViewModel::class.java)
 
         binding.fabAddStudent.setOnClickListener {
-            val action =
-                StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
+            val action = StudentsListFragmentDirections.actionStudentsListFragmentToNewStudentFragment()
             findNavController().navigate(action)
         }
 
@@ -60,10 +59,7 @@ class StudentsListFragment : Fragment() {
 
         val studentsListAdapter = StudentsListAdapter(object : OnStudentClickListener {
             override fun onClicked(objectId: String) {
-                val action =
-                    StudentsListFragmentDirections.actionStudentsListFragmentToStudentDetailsFragment(
-                        objectId
-                    )
+                val action = StudentsListFragmentDirections.actionStudentsListFragmentToStudentDetailsFragment(objectId)
                 findNavController().navigate(action)
             }
         })

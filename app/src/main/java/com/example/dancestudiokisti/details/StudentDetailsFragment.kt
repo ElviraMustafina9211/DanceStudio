@@ -68,9 +68,9 @@ class StudentDetailsFragment : Fragment() {
             startActivity(intent)
         }
 
-        Injector.instance.inject(this)
-
-        studentDetailsViewModel.getStudentDetails(args.objectId)
+//        Injector.instance.inject(this)
+//
+//        studentDetailsViewModel.getStudentDetails(args.objectId)
 
         //Подписка на LiveData с деталями по студенту
         studentDetailsViewModel.detailsLiveData.observe(
@@ -138,6 +138,7 @@ class StudentDetailsFragment : Fragment() {
         binding.balancePlus.setOnClickListener { studentDetailsViewModel.onBalancePlusClicked() }
         binding.balanceMinus.setOnClickListener { studentDetailsViewModel.onBalanceMinusClicked() }
 
+        //При нажатии на checkBox
         binding.checkPayment.setOnCheckedChangeListener { _, isChecked ->
             studentDetailsViewModel.onPaymentChanged(isChecked)
         }

@@ -3,13 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SectionsListFragment">
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.example.dancestudiokisti.login.LoginFragment"
+        tools:layout="@layout/login_fragment">
+
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+
+        <argument
+            android:name="userPassword"
+            app:argType="string" />
+
+    <action
+        android:id="@+id/action_LoginFragment_to_SectionsListFragment"
+        app:destination="@id/SectionsListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/SectionsListFragment"
         android:name="com.example.dancestudiokisti.sectionsList.SectionsListFragment"
-        android:label="Title: {title}"
-    tools:layout="@layout/list_sections_fragment">
+        tools:layout="@layout/list_sections_fragment">
 
         <action
             android:id="@+id/action_SectionsListFragment_to_StudentsListFragment"

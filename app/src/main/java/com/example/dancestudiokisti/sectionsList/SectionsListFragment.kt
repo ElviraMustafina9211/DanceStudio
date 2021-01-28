@@ -24,7 +24,6 @@ class SectionsListFragment : Fragment() {
 
     private var listSectionsFragmentBinding: ListSectionsFragmentBinding? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,10 +43,8 @@ class SectionsListFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.sections_list_title)
         binding.appbar.toolbar.inflateMenu(R.menu.menu)
 
-
         val sectionsListViewModel = ViewModelProvider(this, viewModelFactory).get(
-            SectionsListViewModel::class.java
-        )
+            SectionsListViewModel::class.java)
 
         binding.fabAddSection.setOnClickListener {
             val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
@@ -64,9 +61,7 @@ class SectionsListFragment : Fragment() {
         }, object : OnSectionClickListener {
             override fun onClick(section: Section) {
                 val action =
-                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(
-                        section.name
-                    )
+                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(section.name)
                 findNavController().navigate(action)
             }
         })

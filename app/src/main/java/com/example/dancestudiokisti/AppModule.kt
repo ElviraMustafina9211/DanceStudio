@@ -1,23 +1,27 @@
 package com.example.dancestudiokisti
 
+import android.content.Context
 import com.example.dancestudiokisti.details.StudentDetailsRepository
 import com.example.dancestudiokisti.details.StudentDetailsViewModelFactory
 import com.example.dancestudiokisti.imagePicker.ImageRepository
 import com.example.dancestudiokisti.imagePicker.ImageViewModelFactory
 import com.example.dancestudiokisti.list.StudentsListRepository
 import com.example.dancestudiokisti.list.StudentsListViewModelFactory
+import com.example.dancestudiokisti.login.LoginRepository
+import com.example.dancestudiokisti.login.LoginViewModelFactory
 import com.example.dancestudiokisti.newSection.NewSectionRepository
 import com.example.dancestudiokisti.newSection.NewSectionViewModelFactory
 import com.example.dancestudiokisti.newStudent.NewStudentRepository
 import com.example.dancestudiokisti.newStudent.NewStudentViewModelFactory
 import com.example.dancestudiokisti.sectionsList.SectionsListRepository
 import com.example.dancestudiokisti.sectionsList.SectionsListViewModelFactory
+import com.example.dancestudiokisti.utils.StringResources
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+class AppModule(private val context: Context) {
     @Provides
     fun studentDetailsRepository(): StudentDetailsRepository {
         return StudentDetailsRepository()
@@ -34,7 +38,7 @@ class AppModule {
     }
 
     @Provides
-    fun studentsListViewModelFactory (studentsListRepository: StudentsListRepository): StudentsListViewModelFactory {
+    fun studentsListViewModelFactory(studentsListRepository: StudentsListRepository): StudentsListViewModelFactory {
         return StudentsListViewModelFactory(studentsListRepository)
     }
 
@@ -64,8 +68,8 @@ class AppModule {
     }
 
     @Provides
-    fun sectionsListViewModelFactory (sectionsListRepository: SectionsListRepository): SectionsListViewModelFactory {
-        return SectionsListViewModelFactory (sectionsListRepository)
+    fun sectionsListViewModelFactory(sectionsListRepository: SectionsListRepository): SectionsListViewModelFactory {
+        return SectionsListViewModelFactory(sectionsListRepository)
     }
 
     @Provides
@@ -76,6 +80,25 @@ class AppModule {
     @Provides
     fun imageViewModelFactory(imageRepository: ImageRepository): ImageViewModelFactory {
         return ImageViewModelFactory(imageRepository)
+    }
+
+    @Provides
+    fun loginRepository(): LoginRepository {
+        return LoginRepository()
+    }
+
+    @Provides
+    @Singleton
+    fun stringResource(): StringResources {
+        return StringResources(context)
+    }
+
+    @Provides
+    fun loginViewModelFactory(
+        loginRepository: LoginRepository,
+        stringResources: StringResources
+    ): LoginViewModelFactory {
+        return LoginViewModelFactory(loginRepository, stringResources)
     }
 
     @Provides

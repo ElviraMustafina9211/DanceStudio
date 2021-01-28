@@ -54,9 +54,7 @@ class NewSectionFragment : Fragment() {
         binding.appbar.toolbar.title = getString(R.string.new_section_title)
         Toolbars.enableBackButton(view, findNavController())
 
-        val newSectionViewModel = ViewModelProvider(this, viewModelFactory).get(
-            NewSectionViewModel::class.java
-        )
+        val newSectionViewModel = ViewModelProvider(this, viewModelFactory).get(NewSectionViewModel::class.java)
 
         binding.saveSectionButton.setOnClickListener {
             val editSection: EditText = binding.editText
@@ -75,6 +73,7 @@ class NewSectionFragment : Fragment() {
                 findNavController().navigateUp()
             }
         })
+
         newSectionViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
             if (isLoading) {
                 binding.progressBar.visibility = View.VISIBLE

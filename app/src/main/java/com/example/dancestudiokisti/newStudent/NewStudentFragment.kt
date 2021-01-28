@@ -64,13 +64,7 @@ class NewStudentFragment : Fragment() {
             val payment = paymentCheckBox.isChecked
             val balanceLessons = balanceLessonsEditText.text.toString().toInt()
 
-            newStudentViewModel.createStudent(
-                fullName,
-                section,
-                numberOfLessons,
-                payment,
-                balanceLessons
-            )
+            newStudentViewModel.createStudent(fullName, section, numberOfLessons, payment, balanceLessons)
             //Скрыть клавиатуру
             keyboard.hideKeyboard(view)
         }
@@ -86,9 +80,7 @@ class NewStudentFragment : Fragment() {
         newStudentViewModel.sectionNames.observe(viewLifecycleOwner, { sectionsList: List<String> ->
             context?.let {
                 binding.spinner.adapter = ArrayAdapter(
-                    it,
-                    R.layout.sections_spinner_item,
-                    sectionsList
+                    it, R.layout.sections_spinner_item, sectionsList
                 )
             }
         })

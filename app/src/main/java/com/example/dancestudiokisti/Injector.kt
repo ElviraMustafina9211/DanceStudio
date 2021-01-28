@@ -1,5 +1,14 @@
 package com.example.dancestudiokisti
 
+import android.content.Context
+
 object Injector {
-    val instance: AppComponent by lazy { DaggerAppComponent.create() }
+
+    lateinit var appModule: AppComponent
+
+    fun init(context: Context) {
+        appModule = DaggerAppComponent.builder().appModule(AppModule(context)).build()
+    }
+
+    val instance: AppComponent by lazy { appModule }
 }
