@@ -20,8 +20,8 @@ class SectionsListRepository {
         sectionsApi = retrofit.create(SectionsApi::class.java)
     }
 
-    fun getSectionsList(): Single<List<Section>> {
-        return sectionsApi.getSectionsList()
+    fun getSectionsList(userToken: String): Single<List<Section>> {
+        return sectionsApi.getSectionsList(userToken)
     }
 
     fun deleteOneSection(objectId: String): Completable {

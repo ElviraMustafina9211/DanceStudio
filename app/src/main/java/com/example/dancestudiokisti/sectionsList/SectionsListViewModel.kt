@@ -25,11 +25,11 @@ class SectionsListViewModel(private val sectionsListRepository: SectionsListRepo
         disposable?.dispose()
     }
 
-    fun getSectionsList() {
+    fun getSectionsList(userToken: String) {
         _isLoading.value = true
         _error.value = false
         disposable = sectionsListRepository
-            .getSectionsList()
+            .getSectionsList(userToken)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ sections: List<Section> ->

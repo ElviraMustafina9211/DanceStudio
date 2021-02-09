@@ -25,6 +25,8 @@ class NewStudentFragment : Fragment() {
 
     private var newStudentFragmentBinding: NewStudentFragmentBinding? = null
 
+    private var userToken: String = "9C31D087-D282-4E3D-AAF7-F0858A35F4D7"
+
     @Inject
     lateinit var keyboard: Keyboard
 
@@ -75,7 +77,7 @@ class NewStudentFragment : Fragment() {
             }
         })
 
-        newStudentViewModel.getSections()
+        newStudentViewModel.getSections(userToken)
 
         newStudentViewModel.sectionNames.observe(viewLifecycleOwner, { sectionsList: List<String> ->
             context?.let {

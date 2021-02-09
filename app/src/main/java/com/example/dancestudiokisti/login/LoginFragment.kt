@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
@@ -55,15 +56,14 @@ class LoginFragment : Fragment() {
 
             //Скрыть клавиатуру
             view.let { keyboard.hideKeyboard(it) }
-
-//            val action = LoginFragmentDirections.actionLoginFragmentToSectionsListFragment()
-//            findNavController().navigate(action)
         }
 
 
         loginViewModel.user.observe(viewLifecycleOwner,
             {
                 Toast.makeText(activity, "Your token: ${it.userToken}", Toast.LENGTH_SHORT).show()
+                val action = LoginFragmentDirections.actionLoginFragmentToSectionsListFragment()
+                findNavController().navigate(action)
             })
 
 

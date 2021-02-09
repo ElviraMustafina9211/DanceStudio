@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface SectionsApi {
 
     @GET("sections?pageSize=100")
-    fun getSectionsList(): Single<List<Section>>
+    fun getSectionsList(@Header("user-token") userToken: String): Single<List<Section>>
 
     @POST("sections")
     fun createSection(@Body section: Section): Single<Section>

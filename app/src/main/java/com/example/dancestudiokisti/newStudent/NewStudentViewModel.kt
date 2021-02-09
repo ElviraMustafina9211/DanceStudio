@@ -31,11 +31,11 @@ class NewStudentViewModel(private val newStudentRepository: NewStudentRepository
         disposable?.dispose()
     }
 
-    fun getSections () {
+    fun getSections (userToken: String) {
         _isLoading.value = true
         _error.value = false
         getSectionsDisposable = sectionsListRepository
-            .getSectionsList()
+            .getSectionsList(userToken)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ sections ->

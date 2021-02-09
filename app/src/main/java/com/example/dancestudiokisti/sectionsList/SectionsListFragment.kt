@@ -24,6 +24,8 @@ class SectionsListFragment : Fragment() {
 
     private var listSectionsFragmentBinding: ListSectionsFragmentBinding? = null
 
+    private var userToken: String = "9C31D087-D282-4E3D-AAF7-F0858A35F4D7"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,14 +46,15 @@ class SectionsListFragment : Fragment() {
         binding.appbar.toolbar.inflateMenu(R.menu.menu)
 
         val sectionsListViewModel = ViewModelProvider(this, viewModelFactory).get(
-            SectionsListViewModel::class.java)
+            SectionsListViewModel::class.java
+        )
 
         binding.fabAddSection.setOnClickListener {
             val action = SectionsListFragmentDirections.actionSectionsListFragmentToNewSectionFragment()
             findNavController().navigate(action)
         }
 
-        sectionsListViewModel.getSectionsList()
+        sectionsListViewModel.getSectionsList(userToken)
 
         val recyclerView = binding.recyclerviewListSectionsFragment
         val sectionsListAdapter = SectionsListAdapter(object : OnSectionLongPressListener {
@@ -61,7 +64,9 @@ class SectionsListFragment : Fragment() {
         }, object : OnSectionClickListener {
             override fun onClick(section: Section) {
                 val action =
-                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(section.name)
+                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(
+                        section.name
+                    )
                 findNavController().navigate(action)
             }
         })
@@ -92,11 +97,11 @@ class SectionsListFragment : Fragment() {
         })
 
         binding.noInternetConnection.setOnClickListener {
-            sectionsListViewModel.getSectionsList()
+            sectionsListViewModel.getSectionsList(userToken)
         }
 
         swipeRefreshLayout.setOnRefreshListener {
-            sectionsListViewModel.getSectionsList()
+            sectionsListViewModel.getSectionsList(userToken)
         }
 
         binding.appbar.toolbar.setOnMenuItemClickListener {

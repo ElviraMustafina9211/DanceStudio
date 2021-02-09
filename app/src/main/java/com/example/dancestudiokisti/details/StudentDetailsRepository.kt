@@ -28,6 +28,7 @@ class StudentDetailsRepository {
     fun updateStudentDetails(objectId: String, student: Student): Single<Student> {
         return studentsDetailsApi.updateStudent(objectId, student)
     }
+
     fun deleteStudentDetails(objectId: String): Completable {
         return studentsDetailsApi.deleteStudent(objectId)
     }

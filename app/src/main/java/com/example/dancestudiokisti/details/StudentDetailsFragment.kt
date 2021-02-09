@@ -68,10 +68,6 @@ class StudentDetailsFragment : Fragment() {
             startActivity(intent)
         }
 
-//        Injector.instance.inject(this)
-//
-//        studentDetailsViewModel.getStudentDetails(args.objectId)
-
         //Подписка на LiveData с деталями по студенту
         studentDetailsViewModel.detailsLiveData.observe(
             viewLifecycleOwner,
