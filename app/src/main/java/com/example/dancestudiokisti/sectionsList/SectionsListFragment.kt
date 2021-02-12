@@ -24,7 +24,6 @@ class SectionsListFragment : Fragment() {
 
     private var listSectionsFragmentBinding: ListSectionsFragmentBinding? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -64,9 +63,7 @@ class SectionsListFragment : Fragment() {
         }, object : OnSectionClickListener {
             override fun onClick(section: Section) {
                 val action =
-                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(
-                        section.name
-                    )
+                    SectionsListFragmentDirections.actionSectionsListFragmentToStudentsListFragment(section.name)
                 findNavController().navigate(action)
             }
         })
