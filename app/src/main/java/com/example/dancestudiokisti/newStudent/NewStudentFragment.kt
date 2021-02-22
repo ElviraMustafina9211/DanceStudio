@@ -31,7 +31,7 @@ class NewStudentFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Injector.instance.inject(this)
+        Injector.newStudentComponent.inject(this)
     }
 
     override fun onCreateView(

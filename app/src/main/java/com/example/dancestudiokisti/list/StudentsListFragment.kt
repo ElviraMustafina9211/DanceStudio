@@ -28,7 +28,7 @@ class StudentsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Injector.instance.inject(this)
+        Injector.studentsList.inject(this)
     }
 
     override fun onCreateView(

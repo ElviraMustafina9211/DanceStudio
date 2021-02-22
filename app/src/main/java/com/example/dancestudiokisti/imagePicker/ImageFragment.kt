@@ -27,7 +27,7 @@ class ImageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Injector.instance.inject(this)
+        Injector.imageComponent.inject(this)
     }
 
     override fun onCreateView(

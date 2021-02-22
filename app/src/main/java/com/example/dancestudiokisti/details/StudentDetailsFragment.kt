@@ -19,7 +19,6 @@ import com.example.dancestudiokisti.databinding.StudentDetailsFragmentBinding
 import com.example.dancestudiokisti.views.Toolbars
 import javax.inject.Inject
 
-
 class StudentDetailsFragment : Fragment() {
 
     @Inject
@@ -35,7 +34,7 @@ class StudentDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Injector.instance.inject(this)
+        Injector.studentDetailsComponent.inject(this)
     }
 
     override fun onCreateView(
@@ -67,8 +66,6 @@ class StudentDetailsFragment : Fragment() {
             )
             startActivity(intent)
         }
-
-        Injector.instance.inject(this)
 
         studentDetailsViewModel.getStudentDetails(args.objectId)
 

@@ -27,7 +27,7 @@ class SectionsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Injector.instance.inject(this)
+        Injector.sectionsList.inject(this)
     }
 
     override fun onCreateView(
@@ -56,7 +56,8 @@ class SectionsListFragment : Fragment() {
         sectionsListViewModel.getSectionsList()
 
         val recyclerView = binding.recyclerviewListSectionsFragment
-        val sectionsListAdapter = SectionsListAdapter(object : OnSectionLongPressListener {
+        val sectionsListAdapter = SectionsListAdapter(
+            object : OnSectionLongPressListener {
             override fun onLongPressed(section: Section) {
                 sectionsListViewModel.deleteOneSection(section.objectId)
             }
