@@ -1,18 +1,33 @@
 package com.example.dancestudiokisti.list
 
+import com.example.dancestudiokisti.BuildConfig
 import dagger.Module
 import dagger.Provides
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class StudentsListModule {
 
     @Provides
-    fun studentsListRepository(): StudentsListRepository {
-        return StudentsListRepository()
+    fun studentsListRepository(studentsListApi: StudentsListApi): StudentsListRepository {
+        return StudentsListRepository(studentsListApi)
     }
 
     @Provides
     fun studentsListViewModelFactory (studentsListRepository: StudentsListRepository): StudentsListViewModelFactory {
         return StudentsListViewModelFactory(studentsListRepository)
+    }
+
+    @Provides
+    fun studentsListApi(gsonConverterFactory: GsonConverterFactory, rxJava2CallAdapterFactory: RxJava2CallAdapterFactory
+    ): StudentsListApi {
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(gsonConverterFactory)
+            .addCallAdapterFactory(rxJava2CallAdapterFactory)
+            .build()
+        return retrofit.create(StudentsListApi::class.java)
     }
 }
