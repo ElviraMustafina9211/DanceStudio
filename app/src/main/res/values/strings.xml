@@ -43,4 +43,9 @@
     <string name="please_choose_image">Пожалуйста, установите картинку</string>
     <string name="image_set_successfully">Картинка установлена успешно</string>
     <string name="selected_image">selected image</string>
+    <string name="log_in">Вход</string>
+    <string name="hint_login">Введите email</string>
+    <string name="hint_password">Введите пароль</string>
+    <string name="log_in_user">Войти</string>
+    <string name="incorrect_login_or_password">Некорректный email или некорректный пароль</string>
 </resources>

@@ -6,6 +6,8 @@ import com.example.dancestudiokisti.imagePicker.DaggerImageComponent
 import com.example.dancestudiokisti.imagePicker.ImageComponent
 import com.example.dancestudiokisti.list.DaggerStudentsListComponent
 import com.example.dancestudiokisti.list.StudentsListComponent
+import com.example.dancestudiokisti.login.DaggerLoginComponent
+import com.example.dancestudiokisti.login.LoginComponent
 import com.example.dancestudiokisti.newSection.DaggerNewSectionComponent
 import com.example.dancestudiokisti.newSection.NewSectionComponent
 import com.example.dancestudiokisti.newStudent.DaggerNewStudentComponent
@@ -24,6 +26,10 @@ object Injector {
     }
 
     val instance: AppComponent by lazy { DaggerAppComponent.create() }
+
+    val loginComponent: LoginComponent by lazy {
+        DaggerLoginComponent.builder().appComponent(appComponent).keyboardComponent(keyboardComponent).build()
+    }
 
     val sectionsList: SectionsListComponent by lazy {
         DaggerSectionsListComponent.builder().appComponent(appComponent).build()

@@ -159,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
+                android:padding="8dp"
                 android:background="@drawable/border_buttons"
                 android:text="@string/button_save_details"
                 android:textColor="?android:attr/textColorPrimary" />
@@ -169,6 +170,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="24dp"
+                android:padding="8dp"
                 android:background="@drawable/border_buttons"
                 android:text="@string/button_delete"
                 android:textColor="?android:attr/textColorPrimary" />

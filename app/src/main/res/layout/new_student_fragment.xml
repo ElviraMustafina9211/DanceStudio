@@ -90,6 +90,7 @@
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
+            android:padding="8dp"
             android:background="@drawable/border_buttons"
             android:text="@string/button_save"
             android:textColor="?android:attr/textColorPrimary" />

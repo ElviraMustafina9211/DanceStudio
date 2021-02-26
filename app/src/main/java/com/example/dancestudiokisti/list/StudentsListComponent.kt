@@ -1,10 +1,10 @@
 package com.example.dancestudiokisti.list
 
 import com.example.dancestudiokisti.AppComponent
+import com.example.dancestudiokisti.FragmentScope
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@FragmentScope
 @Component(modules = [StudentsListModule::class], dependencies = [AppComponent::class])
 interface StudentsListComponent {
     fun inject(studentsListFragment: StudentsListFragment)

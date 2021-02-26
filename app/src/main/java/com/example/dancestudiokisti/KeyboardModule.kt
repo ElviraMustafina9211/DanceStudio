@@ -5,6 +5,7 @@ import dagger.Provides
 
 @Module
 class KeyboardModule {
+
     @Provides
     fun keyboard(): Keyboard {
         return KeyboardImpl()
