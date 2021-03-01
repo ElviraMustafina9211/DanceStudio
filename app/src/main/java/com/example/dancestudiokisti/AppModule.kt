@@ -1,5 +1,6 @@
 package com.example.dancestudiokisti
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -22,8 +23,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun tokenSaver(): TokenSaver {
-        return TokenSaver()
+    fun tokenSaver(context: Context): TokenSaver {
+        return TokenSaver(context)
     }
 
     @Provides
