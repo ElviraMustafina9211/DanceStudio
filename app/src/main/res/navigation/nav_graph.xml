@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/LoginFragment">
+    app:startDestination="@id/RegistrationFragment">
+
+    <fragment
+        android:id="@+id/RegistrationFragment"
+        android:name="com.example.dancestudiokisti.registration.RegistrationFragment"
+        tools:layout="@layout/registration_fragment">
+
+        <action
+            android:id="@+id/action_RegistrationFragment_to_SectionsListFragment"
+            app:destination="@id/SectionsListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/LoginFragment"
