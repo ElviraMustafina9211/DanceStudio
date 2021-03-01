@@ -48,7 +48,7 @@ class ImageViewModelTest {
             mockLoadingObserver.onChanged(false)
         }
         verify {
-            mockErrorObserver.onChanged(false)
+            mockErrorObserver.onChanged(true)
         }
         assert(imageViewModel.imagesLiveData.value == expectedImages)
     }
