@@ -17,58 +17,54 @@
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/log_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:padding="8dp"
             android:layout_marginTop="42dp"
-            android:text="@string/log_in"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="36sp" />
-
-        <EditText
-            android:id="@+id/edit_login"
-            android:layout_width="250dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:autofillHints=""
-            android:background="@drawable/border_dances"
             android:gravity="center"
-            android:hint="@string/hint_login"
-            android:inputType="textAutoComplete"
             android:padding="8dp"
+            android:text="@string/hello"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="16sp"
-            />
+            android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/edit_password"
-            android:layout_width="250dp"
-            android:layout_height="48dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:autofillHints=""
-            android:background="@drawable/border_dances"
-            android:gravity="center"
-            android:hint="@string/hint_password"
+            android:layout_marginTop="24dp"
             android:padding="8dp"
+            android:gravity="center"
+            android:text="@string/app_info"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="16sp"
-            android:inputType="textPassword"
-            />
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/log_in_user"
-            android:layout_width="wrap_content"
+            android:id="@+id/button_login"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:autofillHints=""
+            android:background="@drawable/border_dances"
+            android:gravity="center"
+            android:hint="@string/login"
+            android:padding="8dp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button_registration"
+            android:layout_width="250dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:background="@drawable/border_buttons"
-            android:text="@string/log_in_user"
-            android:textColor="?android:attr/textColorPrimary" />
+            android:autofillHints=""
+            android:background="@drawable/border_dances"
+            android:gravity="center"
+            android:hint="@string/registration"
+            android:padding="8dp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

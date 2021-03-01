@@ -1,7 +1,10 @@
 package com.example.dancestudiokisti
 
+import android.content.Context
 import com.example.dancestudiokisti.details.DaggerStudentDetailsComponent
 import com.example.dancestudiokisti.details.StudentDetailsComponent
+import com.example.dancestudiokisti.entry.DaggerEntryComponent
+import com.example.dancestudiokisti.entry.EntryComponent
 import com.example.dancestudiokisti.imagePicker.DaggerImageComponent
 import com.example.dancestudiokisti.imagePicker.ImageComponent
 import com.example.dancestudiokisti.list.DaggerStudentsListComponent
@@ -19,23 +22,33 @@ import com.example.dancestudiokisti.sectionsList.SectionsListComponent
 
 object Injector {
 
+    private lateinit var appContext: Context
+
+    fun initialize(appContext: Context) {
+        this.appContext = appContext
+    }
+
     private val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder().build()
+        DaggerAppComponent.builder().appModule(AppModule(appContext)).build()
     }
 
     private val keyboardComponent: KeyboardComponent by lazy {
         DaggerKeyboardComponent.builder().build()
     }
 
-    val instance: AppComponent by lazy { DaggerAppComponent.create() }
+    val entryComponent: EntryComponent by lazy {
+        DaggerEntryComponent.builder().appComponent(appComponent).build()
+    }
 
     val registrationComponent: RegistrationComponent by lazy {
-        DaggerRegistrationComponent.builder().appComponent(appComponent).keyboardComponent(keyboardComponent).loginComponent(
-            loginComponent).build()
+        DaggerRegistrationComponent.builder().appComponent(appComponent)
+            .keyboardComponent(keyboardComponent).loginComponent(
+                loginComponent).build()
     }
 
     val loginComponent: LoginComponent by lazy {
-        DaggerLoginComponent.builder().appComponent(appComponent).keyboardComponent(keyboardComponent).build()
+        DaggerLoginComponent.builder().appComponent(appComponent)
+            .keyboardComponent(keyboardComponent).build()
     }
 
     val sectionsList: SectionsListComponent by lazy {
@@ -47,15 +60,18 @@ object Injector {
     }
 
     val studentDetailsComponent: StudentDetailsComponent by lazy {
-        DaggerStudentDetailsComponent.builder().appComponent(appComponent).keyboardComponent(keyboardComponent).build()
+        DaggerStudentDetailsComponent.builder().appComponent(appComponent)
+            .keyboardComponent(keyboardComponent).build()
     }
 
     val newSectionComponent: NewSectionComponent by lazy {
-        DaggerNewSectionComponent.builder().appComponent(appComponent).keyboardComponent(keyboardComponent).build()
+        DaggerNewSectionComponent.builder().appComponent(appComponent)
+            .keyboardComponent(keyboardComponent).build()
     }
 
     val newStudentComponent: NewStudentComponent by lazy {
-        DaggerNewStudentComponent.builder().sectionsListComponent(sectionsList).appComponent(appComponent).keyboardComponent(keyboardComponent).build()
+        DaggerNewStudentComponent.builder().sectionsListComponent(sectionsList)
+            .appComponent(appComponent).keyboardComponent(keyboardComponent).build()
     }
 
     val imageComponent: ImageComponent by lazy {

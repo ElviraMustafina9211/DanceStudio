@@ -4,18 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.dancestudiokisti.Injector
-import com.example.dancestudiokisti.Keyboard
 import com.example.dancestudiokisti.R
-import com.example.dancestudiokisti.databinding.LoginFragmentBinding
-import com.example.dancestudiokisti.login.LoginFragmentDirections
-import com.example.dancestudiokisti.login.LoginViewModel
-import com.example.dancestudiokisti.login.LoginViewModelFactory
+import com.example.dancestudiokisti.databinding.EntryFragmentBinding
 import javax.inject.Inject
 
 class EntryFragment : Fragment() {
@@ -24,9 +18,6 @@ class EntryFragment : Fragment() {
     lateinit var viewModelFactory : EntryViewModelFactory
 
     private var entryFragmentBinding: EntryFragmentBinding? = null
-
-    @Inject
-    lateinit var keyboard: Keyboard
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,52 +33,19 @@ class EntryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = LoginFragmentBinding.bind(view)
+        val binding = EntryFragmentBinding.bind(view)
         entryFragmentBinding = binding
 
         val entryViewModel = ViewModelProvider(this, viewModelFactory).get(EntryViewModel::class.java)
 
-        binding.logInUser.setOnClickListener {
-
-            val editLogin: EditText = binding.editLogin
-            val userEmail = editLogin.text.toString()
-
-            val editPassword: EditText = binding.editPassword
-            val userPassword = editPassword.text.toString()
-            entryViewModel.getUser(userEmail, userPassword)
-
-            //Скрыть клавиатуру
-            view.let { keyboard.hideKeyboard(it) }
+        binding.buttonLogin.setOnClickListener {
+            val action = EntryFragmentDirections.actionEntryFragmentToLoginFragment()
+            findNavController().navigate(action)
         }
 
-
-        entryViewModel.user.observe(viewLifecycleOwner,
-            {
-                Toast.makeText(activity, "Your token: ${it.userToken}", Toast.LENGTH_SHORT).show()
-                val action = LoginFragmentDirections.actionLoginFragmentToSectionsListFragment()
-                findNavController().navigate(action)
-            })
-
-
-        entryViewModel.isLoading.observe(viewLifecycleOwner, { isLoading: Boolean ->
-            if (isLoading) {
-                binding.progressBar.visibility = View.VISIBLE
-            } else {
-                binding.progressBar.visibility = View.GONE
-            }
-        })
-
-        entryViewModel.error.observe(viewLifecycleOwner, { error: String? ->
-            if (error != null) {
-                binding.noInternetConnection.visibility = View.VISIBLE
-                binding.noInternetConnection.text = error
-            } else {
-                binding.noInternetConnection.visibility = View.GONE
-            }
-        })
-
-//        binding.noInternetConnection.setOnClickListener {
-//            loginViewModel.getUser(userEmail, userPassword)
-//        }
+        binding.buttonRegistration.setOnClickListener {
+            val action = EntryFragmentDirections.actionEntryFragmentToRegistrationFragment()
+            findNavController().navigate(action)
+        }
     }
 }

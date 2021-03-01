@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+class AppModule(private val context: Context) {
 
     @Provides
     fun gsonConverterFactory(): GsonConverterFactory {
@@ -23,7 +23,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun tokenSaver(context: Context): TokenSaver {
+    fun tokenSaver(): TokenSaver {
         return TokenSaver(context)
     }
 

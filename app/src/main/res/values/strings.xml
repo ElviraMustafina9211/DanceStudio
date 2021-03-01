@@ -50,4 +50,8 @@
     <string name="incorrect_login_or_password">Некорректный email или некорректный пароль</string>
     <string name="register_user">Зарегистрироваться</string>
     <string name="register">Регистрация</string>
+    <string name="hello">Добро пожаловать!</string>
+    <string name="login">Войти?</string>
+    <string name="registration">Зарегистрироваться?</string>
+    <string name="app_info">Студия танцев</string>
 </resources>
