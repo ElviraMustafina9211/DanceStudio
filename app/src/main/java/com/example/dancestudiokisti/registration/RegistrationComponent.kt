@@ -12,5 +12,5 @@ import dagger.Component
     dependencies = [AppComponent::class, KeyboardComponent::class, LoginComponent::class]
 )
 interface RegistrationComponent {
-    fun inject(RegistrationFragment: RegistrationFragment)
+    fun inject(registrationFragment: RegistrationFragment)
 }
