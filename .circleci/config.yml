@@ -19,3 +19,9 @@ jobs:
       - checkout
       - run:
           command: ./gradlew app:testReleaseUnitTest
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
