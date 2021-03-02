@@ -8,7 +8,4 @@ data class User(
 
     @SerializedName("user-token")
     val userToken: String,
-
-    @SerializedName ("objectId")
-    val objectId: String?
 )
