@@ -67,8 +67,6 @@ class StudentDetailsFragment : Fragment() {
             startActivity(intent)
         }
 
-        studentDetailsViewModel.getStudentDetails(args.objectId)
-
         //Подписка на LiveData с деталями по студенту
         studentDetailsViewModel.detailsLiveData.observe(
             viewLifecycleOwner,
