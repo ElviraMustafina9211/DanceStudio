@@ -17,6 +17,10 @@
         <action
             android:id="@+id/action_EntryFragment_to_RegistrationFragment"
             app:destination="@id/RegistrationFragment" />
+
+        <action
+            android:id="@+id/action_EntryFragment_to_SectionsListFragment"
+            app:destination="@id/SectionsListFragment" />
     </fragment>
 
     <fragment
@@ -53,6 +57,10 @@
         <action
             android:id="@+id/action_SectionsListFragment_to_NewSectionFragment"
             app:destination="@id/NewSectionFragment" />
+
+        <action
+            android:id="@+id/action_SectionsListFragment_to_EntryFragment"
+            app:destination="@id/EntryFragment" />
     </fragment>
 
 

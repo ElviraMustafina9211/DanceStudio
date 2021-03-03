@@ -54,4 +54,5 @@
     <string name="login">Войти?</string>
     <string name="registration">Зарегистрироваться?</string>
     <string name="app_info">Студия танцев</string>
+    <string name="logout">Выйти</string>
 </resources>

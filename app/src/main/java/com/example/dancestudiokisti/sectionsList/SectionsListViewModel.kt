@@ -3,12 +3,14 @@ package com.example.dancestudiokisti.sectionsList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.dancestudiokisti.TokenSaver
 import com.example.dancestudiokisti.newSection.Section
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class SectionsListViewModel(private val sectionsListRepository: SectionsListRepository) : ViewModel() {
+class SectionsListViewModel(private val sectionsListRepository: SectionsListRepository,
+                            private val tokenSaver: TokenSaver) : ViewModel() {
 
     private val _sectionsList: MutableLiveData<List<Section>> = MutableLiveData<List<Section>>()
     val sectionsList: LiveData<List<Section>> = _sectionsList
@@ -18,6 +20,9 @@ class SectionsListViewModel(private val sectionsListRepository: SectionsListRepo
 
     private val _error: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val error: LiveData<Boolean> = _error
+
+    private val _openEntryFragment: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val openEntryFragment: LiveData<Boolean> = _openEntryFragment
 
     private var disposable: Disposable? = null
     override fun onCleared() {
@@ -53,5 +58,10 @@ class SectionsListViewModel(private val sectionsListRepository: SectionsListRepo
                 _error.value = true;
                 _isLoading.value = false
             })
+    }
+
+    fun logOutUser() {
+        tokenSaver.token = null
+        _openEntryFragment.value = true
     }
 }

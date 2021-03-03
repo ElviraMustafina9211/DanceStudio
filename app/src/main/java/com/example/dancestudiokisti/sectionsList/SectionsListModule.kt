@@ -1,6 +1,7 @@
 package com.example.dancestudiokisti.sectionsList
 
 import com.example.dancestudiokisti.BuildConfig
+import com.example.dancestudiokisti.TokenSaver
 import com.example.dancestudiokisti.newSection.SectionsApi
 import dagger.Module
 import dagger.Provides
@@ -18,8 +19,8 @@ class SectionsListModule {
     }
 
     @Provides
-    fun sectionsListViewModelFactory(sectionsListRepository: SectionsListRepository): SectionsListViewModelFactory {
-        return SectionsListViewModelFactory(sectionsListRepository)
+    fun sectionsListViewModelFactory(sectionsListRepository: SectionsListRepository, tokenSaver: TokenSaver): SectionsListViewModelFactory {
+        return SectionsListViewModelFactory(sectionsListRepository, tokenSaver)
     }
 
     @Provides

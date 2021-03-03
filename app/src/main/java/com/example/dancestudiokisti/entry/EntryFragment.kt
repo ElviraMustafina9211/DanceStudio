@@ -47,5 +47,12 @@ class EntryFragment : Fragment() {
             val action = EntryFragmentDirections.actionEntryFragmentToRegistrationFragment()
             findNavController().navigate(action)
         }
+
+        entryViewModel.haveToken.observe(viewLifecycleOwner, {haveToken ->
+            if (haveToken == true) {
+                val action = EntryFragmentDirections.actionEntryFragmentToSectionsListFragment()
+                findNavController().navigate(action)
+            }
+        })
     }
 }

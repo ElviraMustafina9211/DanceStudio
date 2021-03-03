@@ -102,10 +102,22 @@ class SectionsListFragment : Fragment() {
             sectionsListViewModel.getSectionsList()
         }
 
+        sectionsListViewModel.openEntryFragment.observe(viewLifecycleOwner, {openEntryFragment ->
+            if (openEntryFragment) {
+                val action =
+                    SectionsListFragmentDirections.actionSectionsListFragmentToEntryFragment()
+                findNavController().navigate(action)
+            }
+        })
+
         binding.appbar.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.change_mode -> {
                     switchMode()
+                    true
+                }
+                R.id.logout -> {
+                    sectionsListViewModel.logOutUser()
                     true
                 }
                 else -> false
