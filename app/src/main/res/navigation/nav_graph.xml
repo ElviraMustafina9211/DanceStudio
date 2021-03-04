@@ -12,15 +12,21 @@
 
         <action
             android:id="@+id/action_EntryFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
+            app:destination="@id/LoginFragment"
+            app:popUpTo="@+id/LoginFragment"
+            app:popUpToInclusive="true"/>
 
         <action
             android:id="@+id/action_EntryFragment_to_RegistrationFragment"
-            app:destination="@id/RegistrationFragment" />
+            app:destination="@id/RegistrationFragment"
+            app:popUpTo="@+id/RegistrationFragment"
+            app:popUpToInclusive="true"/>
 
         <action
             android:id="@+id/action_EntryFragment_to_SectionsListFragment"
-            app:destination="@id/SectionsListFragment" />
+            app:destination="@id/SectionsListFragment"
+            app:popUpTo="@+id/SectionsListFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -30,7 +36,9 @@
 
         <action
             android:id="@+id/action_RegistrationFragment_to_SectionsListFragment"
-            app:destination="@id/SectionsListFragment" />
+            app:destination="@id/SectionsListFragment"
+            app:popUpTo="@+id/SectionsListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -40,7 +48,9 @@
 
         <action
             android:id="@+id/action_LoginFragment_to_SectionsListFragment"
-            app:destination="@id/SectionsListFragment" />
+            app:destination="@id/SectionsListFragment"
+            app:popUpTo="@+id/SectionsListFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 
