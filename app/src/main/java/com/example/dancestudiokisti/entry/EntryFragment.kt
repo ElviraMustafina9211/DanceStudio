@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.dancestudiokisti.BaseFragment
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.EntryFragmentBinding
 import javax.inject.Inject
 
-class EntryFragment : Fragment() {
+class EntryFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory : EntryViewModelFactory

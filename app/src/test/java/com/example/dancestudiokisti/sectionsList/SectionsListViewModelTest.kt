@@ -3,12 +3,12 @@ package com.example.dancestudiokisti.sectionsList
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.dancestudiokisti.RxImmediateSchedulerRule
+import com.example.dancestudiokisti.TokenSaver
 import com.example.dancestudiokisti.newSection.Section
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import io.mockk.verifyOrder
-import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Rule
 import org.junit.Test
@@ -38,7 +38,11 @@ class SectionsListViewModelTest {
             every { getSectionsList() } returns Single.just(expectedSections)
         }
 
-        val sectionsListViewModel = SectionsListViewModel(mockRepository)
+        val mockTokenSaver = mockk<TokenSaver>{
+ //
+        }
+
+        val sectionsListViewModel = SectionsListViewModel(mockRepository, mockTokenSaver)
         val mockLoadingObserver = mockk<Observer<Boolean>>(relaxed = true)
         val mockErrorObserver = mockk<Observer<Boolean>>(relaxed = true)
         sectionsListViewModel.isLoading.observeForever(mockLoadingObserver)
@@ -65,7 +69,11 @@ class SectionsListViewModelTest {
             every { getSectionsList() } returns Single.error(Exception())
         }
 
-        val sectionsListViewModel = SectionsListViewModel(mockRepository)
+        val mockTokenSaver = mockk<TokenSaver>{
+//
+        }
+
+        val sectionsListViewModel = SectionsListViewModel(mockRepository, mockTokenSaver)
         val mockLoadingObserver = mockk<Observer<Boolean>>(relaxed = true)
         val mockErrorObserver = mockk<Observer<Boolean>>(relaxed = true)
         sectionsListViewModel.isLoading.observeForever(mockLoadingObserver)

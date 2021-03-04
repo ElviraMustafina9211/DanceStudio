@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.dancestudiokisti.BaseFragment
 import com.example.dancestudiokisti.Injector
 import com.example.dancestudiokisti.R
 import com.example.dancestudiokisti.databinding.ListSectionsFragmentBinding
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.list_sections_fragment.*
 import javax.inject.Inject
 
 
-class SectionsListFragment : Fragment() {
+class SectionsListFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory : SectionsListViewModelFactory

@@ -25,7 +25,7 @@ class ImageViewModelTest {
         // Arrange
         val expectedImages = listOf(
             Image(
-                "https://backendlessappcontent.com/5DB01662-49AB-46C2-FF61-D1BE9E31E700/FCA93BA4-4832-4000-87B1-2A27B27356C4/files/images_unicorns/stretcher.png",
+                "https://backendlessappcontent.com/FFE00D00-0065-AC54-FF29-8E6A4D2D4200/1E545F28-B2D8-43E5-9BF3-0E1E350F051D/files/Image/stretcher.png",
             )
         )
 
@@ -48,7 +48,7 @@ class ImageViewModelTest {
             mockLoadingObserver.onChanged(false)
         }
         verify {
-            mockErrorObserver.onChanged(true)
+            mockErrorObserver.onChanged(false)
         }
         assert(imageViewModel.imagesLiveData.value == expectedImages)
     }
