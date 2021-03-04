@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -60,7 +59,6 @@ class LoginFragment : Fragment() {
 
         loginViewModel.user.observe(viewLifecycleOwner,
             {
-                Toast.makeText(activity, "Your token: ${it.userToken}", Toast.LENGTH_SHORT).show()
                 val action = LoginFragmentDirections.actionLoginFragmentToSectionsListFragment()
                 findNavController().navigate(action)
             })
