@@ -101,9 +101,4 @@ class StudentsListFragment : Fragment() {
             studentsListViewModel.getFullNames(args.sectionName)
         }
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        studentsListViewModel.getFullNames(args.sectionName)
-//    }
 }

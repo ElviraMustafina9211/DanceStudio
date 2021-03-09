@@ -79,9 +79,5 @@ class RegistrationFragment : Fragment() {
                 binding.noInternetConnection.visibility = View.GONE
             }
         })
-
-//        binding.noInternetConnection.setOnClickListener {
-//            loginViewModel.getUser(userEmail, userPassword)
-//        }
     }
 }
