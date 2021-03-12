@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NewStudentModule {
     @Provides
     fun newStudentRepository(studentsListApi: StudentsListApi): NewStudentRepository {
-        return NewStudentRepository(studentsListApi)
+        return NewStudentRepositoryImpl(studentsListApi)
     }
 
     @Provides

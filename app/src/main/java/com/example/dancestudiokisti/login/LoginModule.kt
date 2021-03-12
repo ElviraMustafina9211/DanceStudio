@@ -12,7 +12,7 @@ class LoginModule {
 
     @Provides
     fun loginRepository(loginApi: LoginApi, tokenSaver: TokenSaver): LoginRepository {
-        return LoginRepository(loginApi, tokenSaver)
+        return LoginRepositoryImpl(loginApi, tokenSaver)
     }
 
     @Provides

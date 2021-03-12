@@ -15,7 +15,7 @@ class SectionsListModule {
 
     @Provides
     fun sectionsListRepository(sectionsApi: SectionsApi): SectionsListRepository {
-        return SectionsListRepository(sectionsApi)
+        return SectionsListRepositoryImpl(sectionsApi)
     }
 
     @Provides

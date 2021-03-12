@@ -34,7 +34,7 @@ class SectionsListViewModelTest {
             )
         )
 
-        val mockRepository = mockk<SectionsListRepository> {
+        val mockRepository = mockk<SectionsListRepositoryImpl> {
             every { getSectionsList() } returns Single.just(expectedSections)
         }
 
@@ -65,7 +65,7 @@ class SectionsListViewModelTest {
     @Test
     fun `getSectionsList - error occurred`() {
         // Arrange
-        val mockRepository = mockk<SectionsListRepository> {
+        val mockRepository = mockk<SectionsListRepositoryImpl> {
             every { getSectionsList() } returns Single.error(Exception())
         }
 
@@ -132,7 +132,7 @@ class SectionsListViewModelTest {
 //
 //        val needToDelete = "C376FBD8-2379-43CD-A688-DB3EEA5577FA"
 //
-//        val mockRepository = mockk<SectionsListRepository> {
+//        val mockRepository = mockk<SectionsListRepositoryImpl> {
 //            every { deleteOneSection(needToDelete) } returns Completable.complete()
 //        }
 //

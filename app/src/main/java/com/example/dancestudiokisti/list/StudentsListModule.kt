@@ -13,7 +13,7 @@ class StudentsListModule {
 
     @Provides
     fun studentsListRepository(studentsListApi: StudentsListApi): StudentsListRepository {
-        return StudentsListRepository(studentsListApi)
+        return StudentsListRepositoryImpl(studentsListApi)
     }
 
     @Provides

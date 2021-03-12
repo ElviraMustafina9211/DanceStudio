@@ -13,7 +13,7 @@ class NewSectionModule {
 
     @Provides
     fun newSectionRepository(sectionsApi: SectionsApi): NewSectionRepository {
-        return NewSectionRepository(sectionsApi)
+        return NewSectionRepositoryImpl(sectionsApi)
     }
 
     @Provides

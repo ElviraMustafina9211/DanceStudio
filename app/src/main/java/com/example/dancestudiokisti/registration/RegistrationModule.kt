@@ -18,7 +18,7 @@ class RegistrationModule {
         loginApi: LoginApi,
         tokenSaver: TokenSaver
     ): RegistrationRepository {
-        return RegistrationRepository(registrationApi, loginApi, tokenSaver)
+        return RegistrationRepositoryImpl(registrationApi, loginApi, tokenSaver)
     }
 
     @Provides

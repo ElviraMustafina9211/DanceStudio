@@ -5,16 +5,8 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 
-class StudentDetailsRepository (private val studentsDetailsApi: StudentDetailsApi) {
-
-    fun getStudentDetails(objectId: String): Single<Student> {
-        return studentsDetailsApi.getStudentDetails(objectId)
-    }
-
-    fun updateStudentDetails(objectId: String, student: Student): Single<Student> {
-        return studentsDetailsApi.updateStudent(objectId, student)
-    }
-    fun deleteStudentDetails(objectId: String): Completable {
-        return studentsDetailsApi.deleteStudent(objectId)
-    }
+interface StudentDetailsRepository {
+    fun getStudentDetails(objectId: String): Single<Student>
+    fun updateStudentDetails(objectId: String, student: Student): Single<Student>
+    fun deleteStudentDetails(objectId: String): Completable
 }

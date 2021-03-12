@@ -13,7 +13,7 @@ class ImageModule {
 
     @Provides
     fun imageRepository(imageApi: ImageApi): ImageRepository {
-        return ImageRepository(imageApi)
+        return ImageRepositoryImpl(imageApi)
     }
 
     @Provides

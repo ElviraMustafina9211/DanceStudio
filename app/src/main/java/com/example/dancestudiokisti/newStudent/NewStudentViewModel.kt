@@ -9,7 +9,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class NewStudentViewModel(private val newStudentRepository: NewStudentRepository, private  val  sectionsListRepository: SectionsListRepository) : ViewModel() {
+class NewStudentViewModel(
+    private val newStudentRepository: NewStudentRepository,
+    private val sectionsListRepository: SectionsListRepository,
+) : ViewModel() {
 
     private val _sectionNames: MutableLiveData<List<String>> = MutableLiveData<List<String>>()
     val sectionNames: LiveData<List<String>> = _sectionNames
@@ -31,20 +34,26 @@ class NewStudentViewModel(private val newStudentRepository: NewStudentRepository
         disposable?.dispose()
     }
 
-    fun getSections () {
+    fun getSections() {
         _isLoading.value = true
         _error.value = false
         getSectionsDisposable = sectionsListRepository
             .getSectionsList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({ sections ->
+            .subscribe({ sections ->
                 _isLoading.value = false
                 _sectionNames.value = sections.map { it.name }
             }, { _error.value = true; _isLoading.value = false })
     }
 
-    fun createStudent(fullName: String, section: String, numberOfLessons: Int, wasPayed: Boolean, balanceOfLessons: Int) {
+    fun createStudent(
+        fullName: String,
+        section: String,
+        numberOfLessons: Int,
+        wasPayed: Boolean,
+        balanceOfLessons: Int,
+    ) {
         val newStudent = Student(section, fullName, "", wasPayed, numberOfLessons, balanceOfLessons)
         _isLoading.value = true
         _error.value = false
