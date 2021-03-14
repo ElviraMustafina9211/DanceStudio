@@ -34,7 +34,7 @@ class SectionsListViewModelTest {
             )
         )
 
-        val mockRepository = mockk<SectionsListRepositoryImpl> {
+        val mockRepository = mockk<SectionsListRepository> {
             every { getSectionsList() } returns Single.just(expectedSections)
         }
 
