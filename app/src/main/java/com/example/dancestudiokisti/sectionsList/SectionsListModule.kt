@@ -30,7 +30,7 @@ class SectionsListModule {
         okHttpClient: OkHttpClient
     ): SectionsApi {
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL + "data/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(rxJava2CallAdapterFactory)
