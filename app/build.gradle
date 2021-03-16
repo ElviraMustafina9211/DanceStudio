@@ -45,6 +45,10 @@ android {
     defaultConfig {
         multiDexEnabled true
     }
+
+    lintOptions {
+        textReport true
+    }
 }
 
 dependencies {
@@ -58,8 +62,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
@@ -85,8 +89,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android:2.15"
     kapt "com.google.dagger:dagger-compiler:2.29.1"
 
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha07"
-    implementation "androidx.datastore:datastore-preferences-rxjava2:1.0.0-alpha07"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
+    implementation "androidx.datastore:datastore-preferences-rxjava2:1.0.0-alpha08"
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation "io.mockk:mockk:1.10.2"

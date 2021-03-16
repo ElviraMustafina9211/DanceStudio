@@ -30,33 +30,40 @@ class StudentDetailsViewModel(private val studentDetailsRepository: StudentDetai
     }
 
     fun onBalanceMinusClicked() {
-        val studentDetails = detailsLiveData.value
-        studentDetails?.balanceOfLessons = (studentDetails?.balanceOfLessons ?: 0) - 1
-        _detailsLiveData.value = studentDetails
+        detailsLiveData.value?.let {
+            it.balanceOfLessons = it.balanceOfLessons - 1
+            _detailsLiveData.value = it
+        }
     }
 
     fun onBalancePlusClicked() {
-        val studentDetails = detailsLiveData.value
-        studentDetails?.balanceOfLessons = (studentDetails?.balanceOfLessons ?: 0) + 1
-        _detailsLiveData.value = studentDetails
+        detailsLiveData.value?.let {
+            it.balanceOfLessons = it.balanceOfLessons + 1
+            _detailsLiveData.value = it
+        }
     }
 
     fun onMinusNumberOfLessonsClicked() {
-        val studentDetails = detailsLiveData.value
-        studentDetails?.numberOfLessons = (studentDetails?.numberOfLessons ?: 0) - 1
-        _detailsLiveData.value = studentDetails
+        detailsLiveData.value?.let {
+            it.numberOfLessons = it.numberOfLessons - 1
+            _detailsLiveData.value = it
+        }
     }
 
     fun onPlusNumberOfLessonsClicked() {
-        val studentDetails = detailsLiveData.value
-        studentDetails?.numberOfLessons = (studentDetails?.numberOfLessons ?: 0) + 1
-        _detailsLiveData.value = studentDetails
+        detailsLiveData.value?.let {
+            it.numberOfLessons = it.numberOfLessons + 1
+            _detailsLiveData.value = it
+        }
+
     }
 
     fun onPaymentChanged(isChecked: Boolean) {
-        val studentDetails = detailsLiveData.value
-        studentDetails?.wasPayed = isChecked
-        _detailsLiveData.value = studentDetails
+        detailsLiveData.value?.let {
+            it.wasPayed = isChecked
+            _detailsLiveData.value = it
+        }
+
     }
 
     fun getStudentDetails(objectId: String) {

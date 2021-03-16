@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">Dance Studio \'Kisti\'</string>
     <string name="action_reset">Стереть данные?</string>
-
-    <string name="main_activity_label">Main Activity</string>
-    <string name="second_screen_label">Second Screen</string>
-    <string name="third_screen_label">Third Screen</string>
-
     <string name="image_of_dance_section">Image of dance section</string>
     <string name="payment">оплачено?</string>
     <string name="number_of_lessons">занятий куплено</string>
@@ -55,4 +50,5 @@
     <string name="registration">Зарегистрироваться?</string>
     <string name="app_info">Студия танцев</string>
     <string name="logout">Выйти</string>
+    <string name="send_message_to_student">Send message to Student</string>
 </resources>

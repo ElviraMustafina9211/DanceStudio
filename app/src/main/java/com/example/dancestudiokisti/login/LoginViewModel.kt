@@ -18,8 +18,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _error: MutableLiveData<String> = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error: MutableLiveData<String?> = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
 
     private var disposable: Disposable? = null
     override fun onCleared() {

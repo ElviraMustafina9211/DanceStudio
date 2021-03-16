@@ -5,7 +5,8 @@
     <item>
         <bitmap
             android:src="@drawable/ic_unicorn"
-             />
+            android:gravity="center"
+            />
     </item>
 
 </layer-list>
