@@ -15,9 +15,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://api.backendless.com/BB0CA8EB-8AD2-4723-FF91-7793F1AA1500/610916AA-8659-4808-97EC-E64E03666C98/\""
+        buildConfigField "String", "BASE_URL", "\"https://api.backendless.com/734F990E-F196-8D6D-FF24-87412226EC00/5AB589DB-992F-47EF-9B64-3683C0D0E179/\""
     }
 
     buildTypes {
@@ -61,20 +60,20 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     implementation 'com.android.support:multidex:1.0.3'
 
@@ -83,11 +82,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-    api 'com.google.dagger:dagger:2.29.1'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.29.1'
-    implementation "com.google.dagger:dagger:2.29.1"
+    api 'com.google.dagger:dagger:2.33'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.33'
+    implementation "com.google.dagger:dagger:2.33"
     implementation "com.google.dagger:dagger-android:2.15"
-    kapt "com.google.dagger:dagger-compiler:2.29.1"
+    kapt "com.google.dagger:dagger-compiler:2.33"
 
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
     implementation "androidx.datastore:datastore-preferences-rxjava2:1.0.0-alpha08"
