@@ -16,7 +16,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://api.backendless.com/734F990E-F196-8D6D-FF24-87412226EC00/5AB589DB-992F-47EF-9B64-3683C0D0E179/\""
+        buildConfigField "String", "BASE_URL", "\"https://api.backendless.com/63C44135-20E2-265E-FF66-FFAB3B186B00/8E3AB478-6D35-48C8-8AF0-DE8FF47FA56C/\""
     }
 
     buildTypes {
