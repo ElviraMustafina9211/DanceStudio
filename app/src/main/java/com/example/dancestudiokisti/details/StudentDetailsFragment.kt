@@ -1,5 +1,6 @@
 package com.example.dancestudiokisti.details
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -22,7 +23,7 @@ import javax.inject.Inject
 class StudentDetailsFragment : Fragment() {
 
     @Inject
-    lateinit var viewModelFactory : StudentDetailsViewModelFactory
+    lateinit var viewModelFactory: StudentDetailsViewModelFactory
 
     private var studentDetailsFragmentBinding: StudentDetailsFragmentBinding? = null
 
@@ -39,7 +40,7 @@ class StudentDetailsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.student_details_fragment, container, false)
     }
@@ -58,13 +59,14 @@ class StudentDetailsFragment : Fragment() {
 
         //При нажатии на кнопку "Отправить сообщение" откроется экран для отправки SMS
         binding.sendMessage.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("sms:")
-            intent.putExtra(
-                Intent.EXTRA_TEXT,
-                getString(R.string.buy_subscription)
-            )
-            startActivity(intent)
+            val smsIntent = Intent(Intent.ACTION_VIEW)
+            smsIntent.data = Uri.parse("sms:")
+            smsIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.buy_subscription))
+            try {
+                startActivity(smsIntent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(context, "Нет подходящего приложения", Toast.LENGTH_SHORT).show()
+            }
         }
 
         //Подписка на LiveData с деталями по студенту
